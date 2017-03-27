@@ -1,6 +1,5 @@
-# Project 2 Proposal
-## Hedonistic Hibiscus : Hannah, Plippershipper, Sam
-### Lá Trop
+# Project 2 Proposal: Lá Trop
+## Hedonistic Hibiscus : Hannah, Philip, Sam
 
 ### Project goals
 The main goal of this project is to learn and develop a game in C++, most likely using OpenGL to render sprites and graphics. The game will consist of player movement from a top-down perspective. As well, an interesting mechanic we plan on building the game off of is using “portals” to teleport the player to different locations. Stretch goals can include making it multiplayer, more advanced graphical animations, and/or possibly more complex teleportation movement. 
