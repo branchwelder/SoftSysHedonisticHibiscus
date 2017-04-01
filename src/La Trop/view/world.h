@@ -2,7 +2,7 @@
 //  world.h
 //  La Trop
 //
-//  Created by Philip Seger on 4/1/17.
+//  Created on 4/1/17.
 //  Copyright © 2017 Hedonistic Hibiscus. All rights reserved.
 //
 
