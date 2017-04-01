@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220952D61E9044A600C41ED7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220952D51E9044A600C41ED7 /* OpenGL.framework */; };
+		220952D71E9044AB00C41ED7 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220952D31E9042E900C41ED7 /* GLUT.framework */; };
 		2272415C1E8D742D0086C41D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2272415B1E8D742D0086C41D /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		220952D31E9042E900C41ED7 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		220952D51E9044A600C41ED7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		227241581E8D742D0086C41D /* La Trop */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "La Trop"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2272415B1E8D742D0086C41D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,17 +36,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				220952D61E9044A600C41ED7 /* OpenGL.framework in Frameworks */,
+				220952D71E9044AB00C41ED7 /* GLUT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220952D21E9042E900C41ED7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				220952D51E9044A600C41ED7 /* OpenGL.framework */,
+				220952D31E9042E900C41ED7 /* GLUT.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2272414F1E8D742D0086C41D = {
 			isa = PBXGroup;
 			children = (
 				2272415A1E8D742D0086C41D /* La Trop */,
 				227241591E8D742D0086C41D /* Products */,
+				220952D21E9042E900C41ED7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,6 +232,7 @@
 		227241601E8D742D0086C41D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"OTHER_CFLAGS[arch=*]" = "-Wno-deprecated";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -246,6 +263,7 @@
 				227241611E8D742D0086C41D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
