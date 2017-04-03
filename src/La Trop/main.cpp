@@ -13,6 +13,7 @@
 #include "view/square.hpp"
 #include "view/view.hpp"
 #include "model/model.hpp"
+#include "controller/controller.hpp"
 
 // initial window attributes
 int WINDOW_WIDTH = 640;
@@ -38,78 +39,45 @@ Color BLUE = (Color) { 0.0, 0.0, 1.0 };
 
 Model *model;
 View *view;
-
-void display() {
-    view->render();
-}
-
-void reshape(int width, int height) {
-    glViewport(0, 0, width, height);
-
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-
-    // set clipping area so the world stays centered
-    GLfloat xClipLeft = -(width / 2.0) / SCALE;
-    GLfloat xClipRight = (width / 2.0) / SCALE;
-    GLfloat yClipBottom = -(height / 2.0) / SCALE;
-    GLfloat yClipTop = (height / 2.0) / SCALE;
-
-    gluOrtho2D(xClipLeft, xClipRight, yClipBottom, yClipTop);
-}
-
-void keyboard(unsigned char key, int x, int y) {
-    switch(key) {
-        case 27:
-            exit(0);
-        case 'w':
-            std::cout << "up";
-            break;
-        case 'a':
-            std::cout << "left";
-            break;
-        case 's':
-            std::cout << "down";
-            break;
-        case 'd':
-            std::cout << "right";
-            break;
-        case 'q':
-            std::cout << "fire left portal";
-            break;
-        case 'e':
-            std::cout << "fire right portal";
-            break;
-    }
-}
-
-void specialKeys(int key, int x, int y) {
-    switch(key) {
-        case GLUT_KEY_UP:
-            std::cout << "up";
-            break;
-        case GLUT_KEY_LEFT:
-            std::cout << "left";
-            break;
-        case GLUT_KEY_DOWN:
-            std::cout << "down";
-            break;
-        case GLUT_KEY_RIGHT:
-            std::cout << "right";
-            break;
-    }
-}
+Controller *controller;
 
 void initialize() {
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
     glutInitWindowPosition(WINDOW_POS_X, WINDOW_POS_Y);
     glutCreateWindow("La Trop");
-
+    
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(INITIAL_X_MIN, INITIAL_X_MAX, INITIAL_Y_MIN, INITIAL_Y_MAX);
+}
+
+void display() {
+    view->render();
+}
+
+void keyboard(unsigned char key, int x, int y) {
+    controller->handleKeyboard(key, x, y);
+}
+
+void specialKeys(int key, int x, int y) {
+    controller->handleSpecialKeys(key, x, y);
+}
+
+void reshape(int width, int height) {
+    glViewport(0, 0, width, height);
+    
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    
+    // set clipping area so the world stays centered
+    GLfloat xClipLeft = -(width / 2.0) / SCALE;
+    GLfloat xClipRight = (width / 2.0) / SCALE;
+    GLfloat yClipBottom = -(height / 2.0) / SCALE;
+    GLfloat yClipTop = (height / 2.0) / SCALE;
+    
+    gluOrtho2D(xClipLeft, xClipRight, yClipBottom, yClipTop);
 }
 
 int main(int argc, char **argv) {
@@ -117,12 +85,13 @@ int main(int argc, char **argv) {
     initialize();
 
     glutDisplayFunc(display);
-    glutReshapeFunc(reshape);
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(specialKeys);
+    glutReshapeFunc(reshape);
 
     model = new Model();
     view = new View(model);
+    controller = new Controller(model);
 
     model->addBlock(5, 5, Block(RED));
     model->addBlock(12, 20, Block(SILVER));
