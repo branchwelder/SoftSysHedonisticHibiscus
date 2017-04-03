@@ -66,7 +66,12 @@ void specialKeys(int key, int x, int y) {
     
 }
 
-void glInit() {
+void initialize() {
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+    glutInitWindowPosition(WINDOW_POS_X, WINDOW_POS_Y);
+    glutCreateWindow("La Trop");
+
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -75,12 +80,7 @@ void glInit() {
 
 int main(int argc, char **argv) {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-    glutInitWindowPosition(WINDOW_POS_X, WINDOW_POS_Y);
-    glutCreateWindow("La Trop");
-    
-    glInit();
+    initialize();
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
