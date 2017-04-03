@@ -33,6 +33,7 @@
 		220952D51E9044A600C41ED7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		227241581E8D742D0086C41D /* La Trop */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "La Trop"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2272415B1E8D742D0086C41D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+
 		22849F3F1E9064F100A34D7E /* square.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = square.cpp; path = view/square.cpp; sourceTree = "<group>"; };
 		22849F401E9064F100A34D7E /* square.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = square.hpp; path = view/square.hpp; sourceTree = "<group>"; };
 		22E94D681E9209B30026E48E /* view.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = view.cpp; path = view/view.cpp; sourceTree = "<group>"; };
@@ -42,6 +43,7 @@
 		22E94D6E1E92158B0026E48E /* block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = block.cpp; path = model/block.cpp; sourceTree = "<group>"; };
 		22E94D6F1E92158B0026E48E /* block.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = block.hpp; path = model/block.hpp; sourceTree = "<group>"; };
 		D47EC2561E904E830081E004 /* controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = controller.h; path = controller/controller.h; sourceTree = "<group>"; };
+
 		D47EC25D1E904F510081E004 /* enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = enemy.h; path = model/enemy.h; sourceTree = "<group>"; };
 		D47EC25E1E904F6D0081E004 /* enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = enemy.h; path = view/enemy.h; sourceTree = "<group>"; };
 		D47EC25F1E904FA00081E004 /* player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = player.h; path = model/player.h; sourceTree = "<group>"; };
@@ -92,7 +94,6 @@
 		2272415A1E8D742D0086C41D /* La Trop */ = {
 			isa = PBXGroup;
 			children = (
-				D47EC2511E904D6B0081E004 /* controller */,
 				D47EC2501E904D660081E004 /* view */,
 				D47EC24F1E904D600081E004 /* model */,
 				2272415B1E8D742D0086C41D /* main.cpp */,
@@ -126,14 +127,6 @@
 				22E94D691E9209B30026E48E /* view.hpp */,
 			);
 			name = view;
-			sourceTree = "<group>";
-		};
-		D47EC2511E904D6B0081E004 /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				D47EC2561E904E830081E004 /* controller.h */,
-			);
-			name = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
