@@ -11,6 +11,7 @@
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #include "view/square.hpp"
+#include "view/player.hpp"
 #include "view/view.hpp"
 #include "model/model.hpp"
 #include "controller/controller.hpp"
@@ -91,10 +92,13 @@ int main(int argc, char **argv) {
 
     model = new Model();
     view = new View(model);
-    controller = new Controller(model);
+    controller = new Controller(model, view);
 
     model->addBlock(5, 5, Block(RED));
     model->addBlock(12, 20, Block(SILVER));
+    
+    // Initialize player that can be moved by the keyboard
+    model->initPlayer(15,15, Player(15,15,100));
 
     glutMainLoop();
 

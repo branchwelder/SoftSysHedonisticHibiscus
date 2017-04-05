@@ -10,15 +10,17 @@
 #define controller_hpp
 
 #include "../model/model.hpp"
+#include "../view/view.hpp"
 
 class Controller {
 public:
-    Controller(Model *model) : _model(model) {};
+    Controller(Model *model, View *view) : _model(model), _view(view) {};
     void handleKeyboard(unsigned char key, int x, int y);
     void handleSpecialKeys(int key, int x, int y);
     
 private:
     Model *_model;
+    View *_view;
 };
 
 #endif /* controller_hpp */

@@ -15,16 +15,20 @@ void Controller::handleKeyboard(unsigned char key, int x, int y) {
         case 27:
             exit(0);
         case 'w':
-            std::cout << "up";
+            _model->movePlayer(0,1);
+            _view->render(); // Might want to change render function so it only updates screen/doesnt re-render everything
             break;
         case 'a':
-            std::cout << "left";
+            _model->movePlayer(-1,0);
+            _view->render();
             break;
         case 's':
-            std::cout << "down";
+            _model->movePlayer(0,-1);
+            _view->render();
             break;
         case 'd':
-            std::cout << "right";
+            _model->movePlayer(1,0);
+            _view->render();
             break;
         case 'q':
             std::cout << "fire left portal";
@@ -38,16 +42,20 @@ void Controller::handleKeyboard(unsigned char key, int x, int y) {
 void Controller::handleSpecialKeys(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_UP:
-            std::cout << "up";
+            _model->movePlayer(0,1);
+            _view->render();
             break;
         case GLUT_KEY_LEFT:
-            std::cout << "left";
+            _model->movePlayer(-1,0);
+            _view->render();
             break;
         case GLUT_KEY_DOWN:
-            std::cout << "down";
+            _model->movePlayer(0,-1);
+            _view->render();
             break;
         case GLUT_KEY_RIGHT:
-            std::cout << "right";
+            _model->movePlayer(1,0);
+            _view->render();
             break;
     }
 }

@@ -21,4 +21,11 @@ void View::render() {
         Square square(x, y, color);
         square.render();
     }
+    
+    
+    playerPosition player = _model->getPlayer();
+    int x = player.first.first;
+    int y = player.first.second;
+    PlayerView p1(x, y);
+    p1.render();
 }

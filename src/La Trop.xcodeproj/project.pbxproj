@@ -15,6 +15,8 @@
 		22E94D6D1E920EEE0026E48E /* model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E94D6B1E920EEE0026E48E /* model.cpp */; };
 		22E94D701E92158B0026E48E /* block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E94D6E1E92158B0026E48E /* block.cpp */; };
 		22E94D741E92E0640026E48E /* controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E94D721E92E0640026E48E /* controller.cpp */; };
+		A2A6B4481E9459DE00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4461E9459DE00E59F70 /* player.cpp */; };
+		A2A6B44B1E9467FC00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4491E9467FC00E59F70 /* player.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,11 +46,13 @@
 		22E94D6F1E92158B0026E48E /* block.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = block.hpp; path = model/block.hpp; sourceTree = "<group>"; };
 		22E94D721E92E0640026E48E /* controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = controller.cpp; path = controller/controller.cpp; sourceTree = "<group>"; };
 		22E94D731E92E0640026E48E /* controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = controller.hpp; path = controller/controller.hpp; sourceTree = "<group>"; };
+		A2A6B4461E9459DE00E59F70 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = view/player.cpp; sourceTree = "<group>"; };
+		A2A6B4471E9459DE00E59F70 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = player.hpp; path = view/player.hpp; sourceTree = "<group>"; };
+		A2A6B4491E9467FC00E59F70 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = model/player.cpp; sourceTree = "<group>"; };
+		A2A6B44A1E9467FC00E59F70 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = player.hpp; path = model/player.hpp; sourceTree = "<group>"; };
 		D47EC25D1E904F510081E004 /* enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = enemy.h; path = model/enemy.h; sourceTree = "<group>"; };
 		D47EC25E1E904F6D0081E004 /* enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = enemy.h; path = view/enemy.h; sourceTree = "<group>"; };
-		D47EC25F1E904FA00081E004 /* player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = player.h; path = model/player.h; sourceTree = "<group>"; };
 		D47EC2601E904FAA0081E004 /* world.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = world.h; path = model/world.h; sourceTree = "<group>"; };
-		D47EC2611E904FF70081E004 /* player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = player.h; path = view/player.h; sourceTree = "<group>"; };
 		D47EC2621E9050000081E004 /* world.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = world.h; path = view/world.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				D47EC25D1E904F510081E004 /* enemy.h */,
-				D47EC25F1E904FA00081E004 /* player.h */,
+				A2A6B4491E9467FC00E59F70 /* player.cpp */,
+				A2A6B44A1E9467FC00E59F70 /* player.hpp */,
 				D47EC2601E904FAA0081E004 /* world.h */,
 				22E94D6B1E920EEE0026E48E /* model.cpp */,
 				22E94D6C1E920EEE0026E48E /* model.hpp */,
@@ -131,7 +136,8 @@
 				22849F3F1E9064F100A34D7E /* square.cpp */,
 				22849F401E9064F100A34D7E /* square.hpp */,
 				D47EC25E1E904F6D0081E004 /* enemy.h */,
-				D47EC2611E904FF70081E004 /* player.h */,
+				A2A6B4461E9459DE00E59F70 /* player.cpp */,
+				A2A6B4471E9459DE00E59F70 /* player.hpp */,
 				D47EC2621E9050000081E004 /* world.h */,
 				22E94D681E9209B30026E48E /* view.cpp */,
 				22E94D691E9209B30026E48E /* view.hpp */,
@@ -196,12 +202,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2A6B44B1E9467FC00E59F70 /* player.cpp in Sources */,
 				22849F411E9064F100A34D7E /* square.cpp in Sources */,
 				2272415C1E8D742D0086C41D /* main.cpp in Sources */,
 				22E94D701E92158B0026E48E /* block.cpp in Sources */,
 				22E94D741E92E0640026E48E /* controller.cpp in Sources */,
 				22E94D6A1E9209B30026E48E /* view.cpp in Sources */,
 				22E94D6D1E920EEE0026E48E /* model.cpp in Sources */,
+				A2A6B4481E9459DE00E59F70 /* player.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
