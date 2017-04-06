@@ -10,6 +10,7 @@
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
+#include <GL/freeglut.h>
 #include "view/square.hpp"
 #include "view/player.hpp"
 #include "view/view.hpp"

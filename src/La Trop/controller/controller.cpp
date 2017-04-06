@@ -33,6 +33,7 @@ void Controller::handleKeyboard(unsigned char key, int x, int y) {
             std::cout << "fire right portal";
             break;
     }
+    _view->render();
 }
 
 void Controller::handleSpecialKeys(int key, int x, int y) {
@@ -50,4 +51,5 @@ void Controller::handleSpecialKeys(int key, int x, int y) {
             _model->movePlayer(1,0);
             break;
     }
+    _view->render();
 }
