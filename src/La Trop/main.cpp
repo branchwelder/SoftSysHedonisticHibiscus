@@ -11,6 +11,7 @@
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #include "view/square.hpp"
+#include "view/player.hpp"
 #include "view/view.hpp"
 #include "model/model.hpp"
 #include "controller/controller.hpp"
@@ -53,6 +54,10 @@ void initialize() {
     gluOrtho2D(INITIAL_X_MIN, INITIAL_X_MAX, INITIAL_Y_MIN, INITIAL_Y_MAX);
 }
 
+void idleFunc() {
+    glutPostRedisplay();
+}
+
 void display() {
     view->render();
 }
@@ -88,6 +93,7 @@ int main(int argc, char **argv) {
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(specialKeys);
     glutReshapeFunc(reshape);
+    glutIdleFunc(idleFunc);
 
     model = new Model();
     view = new View(model);
@@ -95,6 +101,9 @@ int main(int argc, char **argv) {
 
     model->addBlock(5, 5, Block(RED));
     model->addBlock(12, 20, Block(SILVER));
+    
+    // Initialize player that can be moved by the keyboard
+    model->initPlayer(15,15, Player(15,15,100));
 
     glutMainLoop();
 
