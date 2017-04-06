@@ -9,7 +9,6 @@
 #ifndef player_model_hpp
 #define player_model_hpp
 
-#include "../view/player.hpp"
 
 class Player {
 public:

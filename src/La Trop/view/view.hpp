@@ -9,6 +9,7 @@
 #ifndef view_hpp
 #define view_hpp
 
+#include "player.hpp"
 #include "../model/model.hpp"
 
 class View {
