@@ -306,16 +306,9 @@
 		227241601E8D742D0086C41D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-					"\"/opt/X11/include\"",
-					"\"/usr/local/include\"",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"\"/opt/X11/lib\"",
-					"\"/usr/local/lib\"",
-				);
+				HEADER_SEARCH_PATHS = "\"/usr/local/include\"";
+				LIBRARY_SEARCH_PATHS = "\"/usr/local/lib\"";
 				"OTHER_CFLAGS[arch=*]" = "-Wno-deprecated";
-				OTHER_LDFLAGS = "-lGLUT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -323,15 +316,8 @@
 		227241611E8D742D0086C41D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-					"\"/opt/X11/include\"",
-					"\"/usr/local/include\"",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"\"/opt/X11/lib\"",
-					"\"/usr/local/lib\"",
-				);
-				OTHER_LDFLAGS = "-lGLUT";
+				HEADER_SEARCH_PATHS = "\"/usr/local/include\"";
+				LIBRARY_SEARCH_PATHS = "\"/usr/local/lib\"";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
