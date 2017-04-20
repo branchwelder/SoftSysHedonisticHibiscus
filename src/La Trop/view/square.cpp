@@ -23,6 +23,4 @@ void Square::render() {
     glVertex2f(_x + 1, _y + 1);
     glVertex2f(_x, _y + 1);
     glEnd();
-
-    glutSwapBuffers();
 }
