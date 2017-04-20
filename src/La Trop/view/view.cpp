@@ -7,6 +7,7 @@
 //
 
 #include <OpenGL/gl.h>
+#include <GLUT/glut.h>
 #include "view.hpp"
 #include "square.hpp"
 
@@ -22,10 +23,10 @@ void View::render() {
         square.render();
     }
     
-    
     playerPosition player = _model->getPlayer();
     int x = player.first.first;
     int y = player.first.second;
     PlayerView p1(x, y);
     p1.render();
+    glutSwapBuffers();
 }
