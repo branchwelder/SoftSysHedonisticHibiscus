@@ -9,16 +9,27 @@
 #ifndef player_model_hpp
 #define player_model_hpp
 
+#include "types.h"
 
 class Player {
 public:
-    Player(float x = 0, float y = 0, int health = 100) : _x(x), _y(y), _health(health) {};
+    Player(float x = 15, float y = 15, int health = 100) :
+        _position(x, y),
+        _dxdt(0),
+        _dydt(0),
+        _health(health)
+    {};
+    Position getPosition();
+    Velocity getVelocity();
+    void setVelocity(float dxdt, float dydt);
     bool getGun();
     void setGun(bool status);
+    void move(float dx, float dy);
     
 private:
-    float _x;
-    float _y;
+    Position _position;
+    float _dxdt;
+    float _dydt;
     int _health;
     bool _gun;
 };

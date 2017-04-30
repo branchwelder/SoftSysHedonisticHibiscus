@@ -13,8 +13,9 @@
 
 class Controller {
 public:
-    Controller(Model *model) : _model(model) {};
-    void handleKeyboard(unsigned char key, int x, int y);
+    Controller(Model *model): _model(model) {};
+    void handleKeyPress(unsigned char key, int x, int y);
+    void handleKeyRelease(unsigned char key, int x, int y);
     void handleSpecialKeys(int key, int x, int y);
     
 private:

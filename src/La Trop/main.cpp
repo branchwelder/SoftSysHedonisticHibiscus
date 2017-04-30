@@ -17,19 +17,19 @@
 #include "controller/controller.hpp"
 
 // initial window attributes
-int WINDOW_WIDTH = 640;
-int WINDOW_HEIGHT = 480;
-int WINDOW_POS_X = 50;
-int WINDOW_POS_Y = 50;
+#define WINDOW_WIDTH 640
+#define WINDOW_HEIGHT 480
+#define WINDOW_POS_X 50
+#define WINDOW_POS_Y 50
 
 // scale factor from world coordinates to pixels
-float SCALE = 10.0;
+#define SCALE 10.0
 
 // initial ranges of world coordinates
-float INITIAL_X_MIN = -(WINDOW_WIDTH / 2.0) / SCALE;
-float INITIAL_X_MAX = (WINDOW_WIDTH / 2.0) / SCALE;
-float INITIAL_Y_MIN = -(WINDOW_HEIGHT / 2.0) / SCALE;
-float INITIAL_Y_MAX = (WINDOW_HEIGHT / 2.0) / SCALE;
+#define INITIAL_X_MIN -(WINDOW_WIDTH / 2.0) / SCALE
+#define INITIAL_X_MAX (WINDOW_WIDTH / 2.0) / SCALE
+#define INITIAL_Y_MIN -(WINDOW_HEIGHT / 2.0) / SCALE
+#define INITIAL_Y_MAX (WINDOW_HEIGHT / 2.0) / SCALE
 
 // some colors
 Color WHITE = (Color) { 1.0, 1.0, 1.0 };
@@ -59,11 +59,16 @@ void idleFunc() {
 }
 
 void display() {
+    model->update();
     view->render();
 }
 
 void keyboard(unsigned char key, int x, int y) {
-    controller->handleKeyboard(key, x, y);
+    controller->handleKeyPress(key, x, y);
+}
+
+void keyboardUp(unsigned char key, int x, int y) {
+    controller->handleKeyRelease(key, x, y);
 }
 
 void specialKeys(int key, int x, int y) {
@@ -88,22 +93,20 @@ void reshape(int width, int height) {
 int main(int argc, char **argv) {
     glutInit(&argc, argv);
     initialize();
-
-    glutDisplayFunc(display);
-    glutKeyboardFunc(keyboard);
-    glutSpecialFunc(specialKeys);
-    glutReshapeFunc(reshape);
-    glutIdleFunc(idleFunc);
-
+    
     model = new Model();
     view = new View(model);
     controller = new Controller(model);
-
+    
     model->addBlock(5, 5, Block(RED));
     model->addBlock(12, 20, Block(SILVER));
-    
-    // Initialize player that can be moved by the keyboard
-    model->initPlayer(15,15, Player(15,15,100));
+
+    glutDisplayFunc(display);
+    glutKeyboardFunc(keyboard);
+    glutKeyboardUpFunc(keyboardUp);
+    glutSpecialFunc(specialKeys);
+    glutReshapeFunc(reshape);
+    glutIdleFunc(idleFunc);
 
     glutMainLoop();
 

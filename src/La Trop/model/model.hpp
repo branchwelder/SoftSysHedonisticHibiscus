@@ -12,24 +12,34 @@
 #include <map>
 #include "block.hpp"
 #include "player.hpp"
+#include "types.h"
 
-typedef std::map<std::pair<int, int>, Block> blockMap;
-typedef std::pair<std::pair<int, int>, Player> playerPosition;
+#define PLAYER_SPEED 0.5 //block per second
+#define PLAYER_HITBOX_X 1
+#define PLAYER_HITBOX_Y 1
 
 class Model {
 public:
-    Model() : _world(), _player() {};
-    blockMap getWorld();
-    playerPosition getPlayer();
-    void addBlock(int x, int y, Block block);
-    int checkBlock(int x, int y);
-    void initPlayer(int x, int y, Player player);
-    void movePlayer(int x, int y);
-
+    Model() :
+        _world(),
+        _player(),
+        _time(glutGet(GLUT_ELAPSED_TIME)),
+        _keyStates(new bool[256])
+    {};
+    BlockMap getWorld();
+    Player getPlayer();
+    void addBlock(float x, float y, Block block);
+    int checkBlock(float x, float y);
+    void updateKeyState(unsigned char key, bool val);
+    void update();
 
 private:
-    blockMap _world;
-    playerPosition _player;
+    BlockMap _world;
+    Player _player;
+    int _time;
+    bool *_keyStates;
+    void _processKeys();
+    void _movePlayer(float x, float y);
 };
 
 #endif /* model_hpp */

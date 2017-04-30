@@ -10,6 +10,7 @@
 #define block_hpp
 
 #include "../view/square.hpp"
+#include "../view/color.hpp"
 
 class Block {
 public:

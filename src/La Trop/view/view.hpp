@@ -11,6 +11,8 @@
 
 #include "player.hpp"
 #include "../model/model.hpp"
+#include "../model/types.h"
+
 
 class View {
 public:
@@ -19,6 +21,8 @@ public:
 
 private:
     Model *_model;
+    void _renderBlock(Position position, Block block);
+    void _renderPlayer(Position position);
 };
 
 #endif /* view_hpp */

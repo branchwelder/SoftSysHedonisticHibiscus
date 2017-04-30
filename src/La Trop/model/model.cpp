@@ -6,25 +6,27 @@
 //  Copyright © 2017 Hedonistic Hibiscus. All rights reserved.
 //
 
+#include <GLUT/glut.h>
 #include "model.hpp"
+#include "types.h"
 
-blockMap Model::getWorld() {
+BlockMap Model::getWorld() {
     return _world;
 }
 
-playerPosition Model::getPlayer() {
+Player Model::getPlayer() {
     return _player;
 }
 
-void Model::addBlock(int x, int y, Block block) {
+void Model::addBlock(float x, float y, Block block) {
     _world.insert(std::make_pair(std::make_pair(x, y), block));
 }
 
-int Model::checkBlock(int x, int y) {
+int Model::checkBlock(float dx, float dy) {
     // x and y are delta in position, so we need the players
     // actual position plus the change to compare with blocks
-    int newX = _player.first.first + x;
-    int newY = _player.first.second + y;
+    float newX = _player.getPosition().first + dx;
+    float newY = _player.getPosition().second + dy;
     
     int exists = _world.count(std::make_pair(newX, newY));
     if (exists) {
@@ -33,14 +35,32 @@ int Model::checkBlock(int x, int y) {
     return 0;
 }
 
-void Model::initPlayer(int x, int y, Player player) {
-    _player = std::make_pair(std::make_pair(x, y), player);
+void Model::_movePlayer(float dx, float dy) {
+    // check to not overlap a block
+    if (checkBlock(dx, dy) == 0) {
+        _player.move(dx, dy);
+    }
 }
 
-void Model::movePlayer(int x, int y) {
-    // check to not overlap a block
-    if (checkBlock(x, y) == 0) {
-        _player.first.first = _player.first.first + x;
-        _player.first.second = _player.first.second + y;
+void Model::updateKeyState(unsigned char key, bool val) {
+    _keyStates[key] = val;
+}
+
+void Model::_processKeys() {
+    if (_keyStates['a'] && !_keyStates['d']) {
+        _player.setVelocity(-PLAYER_SPEED, 0);
+    } else if (_keyStates['d'] && !_keyStates['a']) {
+        _player.setVelocity(PLAYER_SPEED, 0);
+    } else {
+        _player.setVelocity(0, 0);
     }
+}
+
+void Model::update() {
+    _processKeys();
+    int currentTime = glutGet(GLUT_ELAPSED_TIME);
+    int dt = currentTime - _time;
+    float dx = _player.getVelocity().first * (dt / 1000);
+    float dy = _player.getVelocity().second * (dt / 1000);
+    _movePlayer(dx, dy);
 }

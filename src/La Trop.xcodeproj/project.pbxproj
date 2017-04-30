@@ -16,6 +16,7 @@
 		22E94D701E92158B0026E48E /* block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E94D6E1E92158B0026E48E /* block.cpp */; };
 		22E94D741E92E0640026E48E /* controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E94D721E92E0640026E48E /* controller.cpp */; };
 		22E966AC1EAE5F9E000D147C /* map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E966AA1EAE5F9E000D147C /* map.cpp */; };
+		22EF204E1EB58F6D00683BD4 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22EF204C1EB58F6D00683BD4 /* color.cpp */; };
 		A2A6B4481E9459DE00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4461E9459DE00E59F70 /* player.cpp */; };
 		A2A6B44B1E9467FC00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4491E9467FC00E59F70 /* player.cpp */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,9 @@
 		22E94D731E92E0640026E48E /* controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = controller.hpp; path = controller/controller.hpp; sourceTree = "<group>"; };
 		22E966AA1EAE5F9E000D147C /* map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = map.cpp; path = map/map.cpp; sourceTree = "<group>"; };
 		22E966AB1EAE5F9E000D147C /* map.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = map.hpp; path = map/map.hpp; sourceTree = "<group>"; };
+		22EF204B1EB579D000683BD4 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = types.h; path = model/types.h; sourceTree = "<group>"; };
+		22EF204C1EB58F6D00683BD4 /* color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = color.cpp; path = view/color.cpp; sourceTree = "<group>"; };
+		22EF204D1EB58F6D00683BD4 /* color.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = color.hpp; path = view/color.hpp; sourceTree = "<group>"; };
 		A2A6B4461E9459DE00E59F70 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = view/player.cpp; sourceTree = "<group>"; };
 		A2A6B4471E9459DE00E59F70 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = player.hpp; path = view/player.hpp; sourceTree = "<group>"; };
 		A2A6B4491E9467FC00E59F70 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = model/player.cpp; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 		D47EC24F1E904D600081E004 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				22EF204B1EB579D000683BD4 /* types.h */,
 				D47EC25D1E904F510081E004 /* enemy.h */,
 				A2A6B4491E9467FC00E59F70 /* player.cpp */,
 				A2A6B44A1E9467FC00E59F70 /* player.hpp */,
@@ -154,6 +159,8 @@
 				D47EC2621E9050000081E004 /* world.h */,
 				22E94D681E9209B30026E48E /* view.cpp */,
 				22E94D691E9209B30026E48E /* view.hpp */,
+				22EF204C1EB58F6D00683BD4 /* color.cpp */,
+				22EF204D1EB58F6D00683BD4 /* color.hpp */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -220,6 +227,7 @@
 				22849F411E9064F100A34D7E /* square.cpp in Sources */,
 				2272415C1E8D742D0086C41D /* main.cpp in Sources */,
 				22E94D701E92158B0026E48E /* block.cpp in Sources */,
+				22EF204E1EB58F6D00683BD4 /* color.cpp in Sources */,
 				22E94D741E92E0640026E48E /* controller.cpp in Sources */,
 				22E94D6A1E9209B30026E48E /* view.cpp in Sources */,
 				22E94D6D1E920EEE0026E48E /* model.cpp in Sources */,
