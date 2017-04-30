@@ -22,6 +22,7 @@ public:
     blockMap getWorld();
     playerPosition getPlayer();
     void addBlock(int x, int y, Block block);
+    void readLevel(char *level);
     int checkBlock(int x, int y);
     void initPlayer(int x, int y, Player player);
     void movePlayer(int x, int y);

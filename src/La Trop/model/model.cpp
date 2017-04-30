@@ -7,6 +7,8 @@
 //
 
 #include "model.hpp"
+#include <iostream>
+#include <fstream>
 
 blockMap Model::getWorld() {
     return _world;
@@ -20,13 +22,26 @@ void Model::addBlock(int x, int y, Block block) {
     _world.insert(std::make_pair(std::make_pair(x, y), block));
 }
 
+void Model::readLevel(char *level) {
+    std::ifstream levelFile;
+    levelFile.open(level);
+    char output[3072];
+    if (levelFile.is_open()) {
+        while (!levelFile.eof()) {
+            levelFile >> output;
+            std::cout << output;
+        }
+    }
+    levelFile.close();
+}
+
 int Model::checkBlock(int x, int y) {
     // x and y are delta in position, so we need the players
     // actual position plus the change to compare with blocks
     int newX = _player.first.first + x;
     int newY = _player.first.second + y;
     
-    int exists = _world.count(std::make_pair(newX, newY));
+    int exists = (int) _world.count(std::make_pair(newX, newY));
     if (exists) {
         return 1;
     }

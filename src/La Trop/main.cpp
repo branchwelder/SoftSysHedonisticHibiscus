@@ -98,12 +98,17 @@ int main(int argc, char **argv) {
     model = new Model();
     view = new View(model);
     controller = new Controller(model);
-
-    model->addBlock(5, 5, Block(RED));
-    model->addBlock(12, 20, Block(SILVER));
+    
+    if ( argc == 2 ) {
+        // TODO check input for levels existing/properly formatted
+        model->readLevel(argv[1]);
+    } else {
+        model->addBlock(5, 5, Block(RED));
+        model->addBlock(12, 20, Block(SILVER));
+    }
     
     // Initialize player that can be moved by the keyboard
-    model->initPlayer(15,15, Player(15,15,100));
+    model->initPlayer(0,0, Player(0,0,100));
 
     glutMainLoop();
 
