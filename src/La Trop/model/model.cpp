@@ -6,6 +6,7 @@
 //  Copyright © 2017 Hedonistic Hibiscus. All rights reserved.
 //
 
+#include <iostream>
 #include <GLUT/glut.h>
 #include "model.hpp"
 #include "types.h"
@@ -57,10 +58,13 @@ void Model::_processKeys() {
 }
 
 void Model::update() {
+    fprintf(stderr, "%d %d\n", _keyStates['a'], _keyStates['d']);
     _processKeys();
     int currentTime = glutGet(GLUT_ELAPSED_TIME);
     int dt = currentTime - _time;
-    float dx = _player.getVelocity().first * (dt / 1000);
-    float dy = _player.getVelocity().second * (dt / 1000);
+    double dx = _player.getVelocity().first * (dt / 1000.0);
+    double dy = _player.getVelocity().second * ( dt / 1000.0);
+    fprintf(stderr, "%f %f\n", dx, dy);
     _movePlayer(dx, dy);
+    _time = currentTime;
 }

@@ -13,7 +13,7 @@ Position Player::getPosition() {
 }
 
 Velocity Player::getVelocity() {
-    return std::pair<float, float>(_dxdt, _dydt);
+    return Velocity(_dxdt, _dydt);
 }
 
 bool Player::getGun() {
