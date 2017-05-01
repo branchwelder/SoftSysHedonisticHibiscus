@@ -14,9 +14,10 @@
 #include "player.hpp"
 #include "types.h"
 
-#define PLAYER_SPEED 10 //block per second
-#define PLAYER_HITBOX_X 1
-#define PLAYER_HITBOX_Y 1
+#define PLAYER_SPEED 5.0f //blocks per second
+#define GRAVITY -10.0f // blocks per second squared
+#define PLAYER_HITBOX_X 1.0f
+#define PLAYER_HITBOX_Y 1.0f
 
 class Model {
 public:
@@ -27,9 +28,10 @@ public:
         _keyStates{false}
     {};
     BlockMap getWorld();
-    Player getPlayer();
+    Player& getPlayer();
     void addBlock(float x, float y, Block block);
     int checkBlock(float x, float y);
+    int checkCollision(Position corner1, Position corner2);
     void updateKeyState(unsigned char key, bool val);
     void update();
 
@@ -39,6 +41,7 @@ private:
     int _time;
     bool _keyStates[256];
     void _processKeys();
+    void _handlePhysics(float dt);
     void _movePlayer(float x, float y);
 };
 

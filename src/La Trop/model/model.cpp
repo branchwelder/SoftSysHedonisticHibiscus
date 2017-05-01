@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <cmath>
 #include <GLUT/glut.h>
 #include "model.hpp"
 #include "types.h"
@@ -15,7 +16,7 @@ BlockMap Model::getWorld() {
     return _world;
 }
 
-Player Model::getPlayer() {
+Player& Model::getPlayer() {
     return _player;
 }
 
@@ -23,24 +24,27 @@ void Model::addBlock(float x, float y, Block block) {
     _world.insert(std::make_pair(std::make_pair(x, y), block));
 }
 
-int Model::checkBlock(float dx, float dy) {
-    // x and y are delta in position, so we need the players
-    // actual position plus the change to compare with blocks
-    float newX = _player.getPosition().first + dx;
-    float newY = _player.getPosition().second + dy;
+int Model::checkCollision(Position corner1, Position corner2) {
+    float d1x = corner2.first - (corner1.first + 1);
+    float d1y = corner2.second - (corner1.second + 1);
+    float d2x = corner1.first - (corner2.first + 1);
+    float d2y = corner1.second - (corner2.second + 1);
     
-    int exists = _world.count(std::make_pair(newX, newY));
-    if (exists) {
-        return 1;
+    if (d1x > 0.0f || d1y > 0.0f) {
+        return 0;
     }
-    return 0;
+    if (d2x > 0.0f || d2y > 0.0f) {
+        return 0;
+    }
+    if (std::abs(corner1.first - corner2.first) > std::abs(corner1.second - corner2.second)) {
+        return 1;
+    } else {
+        return 2;
+    }
 }
 
 void Model::_movePlayer(float dx, float dy) {
-    // check to not overlap a block
-    if (checkBlock(dx, dy) == 0) {
-        _player.move(dx, dy);
-    }
+    _player.move(dx, dy);
 }
 
 void Model::updateKeyState(unsigned char key, bool val) {
@@ -49,22 +53,46 @@ void Model::updateKeyState(unsigned char key, bool val) {
 
 void Model::_processKeys() {
     if (_keyStates['a'] && !_keyStates['d']) {
-        _player.setVelocity(-PLAYER_SPEED, 0);
+        _player.setActiveVelocity(-PLAYER_SPEED, 0.0f);
     } else if (_keyStates['d'] && !_keyStates['a']) {
-        _player.setVelocity(PLAYER_SPEED, 0);
+        _player.setActiveVelocity(PLAYER_SPEED, 0.0f);
     } else {
-        _player.setVelocity(0, 0);
+        _player.setActiveVelocity(0.0f, 0.0f);
+    }
+}
+
+void Model::_handlePhysics(float dt) {
+    float dydt = GRAVITY * (dt / 1000.0f);
+    double dx = _player.getVelocity().first * (dt / 1000.0f);
+    double dy = (_player.getVelocity().second + dydt) * (dt / 1000.0f);
+    Position newPosition = Position(
+        _player.getPosition().first + dx,
+        _player.getPosition().second + dy
+    );
+    int collision = 0;
+    for (auto it : _world) {
+        if (checkCollision(it.first, newPosition) == 2) {
+            collision = 2;
+            break;
+        }
+    }
+    if (!_player.onGround) {
+        if (collision == 2) {
+            _player.onGround = true;
+            _player.resetPassiveVelocity();
+        } else {
+            _player.changePassiveVelocity(0.0f, dydt);
+        }
+        _movePlayer(dx, dy);
+    } else {
+        _movePlayer(dx, 0.0f);
     }
 }
 
 void Model::update() {
-    fprintf(stderr, "%d %d\n", _keyStates['a'], _keyStates['d']);
-    _processKeys();
     int currentTime = glutGet(GLUT_ELAPSED_TIME);
     int dt = currentTime - _time;
-    double dx = _player.getVelocity().first * (dt / 1000.0);
-    double dy = _player.getVelocity().second * ( dt / 1000.0);
-    fprintf(stderr, "%f %f\n", dx, dy);
-    _movePlayer(dx, dy);
+    _processKeys();
+    _handlePhysics(dt);
     _time = currentTime;
 }

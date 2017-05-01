@@ -99,7 +99,9 @@ int main(int argc, char **argv) {
     controller = new Controller(model);
     
     model->addBlock(5, 5, Block(RED));
-    model->addBlock(12, 20, Block(SILVER));
+    for (int i = -32; i <= 32; i++) {
+        model->addBlock(i, -24, Block(SILVER));
+    }
 
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);

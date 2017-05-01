@@ -11,25 +11,32 @@
 
 #include "types.h"
 
+#define JUMP_VELOCITY 10 // blocks per second
+
 class Player {
 public:
     Player(float x = 15, float y = 15, int health = 100) :
         _position(x, y),
-        _dxdt(0),
-        _dydt(0),
-        _health(health)
+        _activeVelocity(Velocity(0, 0)),
+        _passiveVelocity(Velocity(0, 0)),
+        _health(health),
+        onGround(false)
     {};
     Position getPosition();
     Velocity getVelocity();
-    void setVelocity(float dxdt, float dydt);
+    void setActiveVelocity(float dxdt, float dydt);
+    void changePassiveVelocity(float dxdt, float dydt);
+    void resetPassiveVelocity();
     bool getGun();
     void setGun(bool status);
     void move(float dx, float dy);
+    void jump();
+    bool onGround;
     
 private:
     Position _position;
-    float _dxdt;
-    float _dydt;
+    Velocity _activeVelocity;
+    Velocity _passiveVelocity;
     int _health;
     bool _gun;
 };

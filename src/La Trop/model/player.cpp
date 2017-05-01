@@ -13,7 +13,10 @@ Position Player::getPosition() {
 }
 
 Velocity Player::getVelocity() {
-    return Velocity(_dxdt, _dydt);
+    return Velocity(
+        _activeVelocity.first + _passiveVelocity.first,
+        _activeVelocity.second + _passiveVelocity.second
+    );
 }
 
 bool Player::getGun() {
@@ -29,7 +32,25 @@ void Player::move(float dx, float dy) {
     _position.second += dy;
 }
 
-void Player::setVelocity(float dxdt, float dydt) {
-    _dxdt = dxdt;
-    _dydt = dydt;
+void Player::jump() {
+    if (onGround) {
+        _passiveVelocity.second += JUMP_VELOCITY;
+        onGround = false;
+        fprintf(stderr, "jump!\n");
+    }
+}
+
+void Player::setActiveVelocity(float dxdt, float dydt) {
+    _activeVelocity.first = dxdt;
+    _activeVelocity.second = dydt;
+}
+
+void Player::changePassiveVelocity(float dxdt, float dydt) {
+    _passiveVelocity.first += dxdt;
+    _passiveVelocity.second += dydt;
+}
+
+void Player::resetPassiveVelocity() {
+    _passiveVelocity.first = 0.0f;
+    _passiveVelocity.second = 0.0f;
 }

@@ -20,6 +20,8 @@ void Controller::handleKeyPress(unsigned char key, int x, int y) {
         case 'e':
             std::cout << "fire right portal";
             break;
+        case 'w':
+            _model->getPlayer().jump();
         default:
             _model->updateKeyState(key, true);
     }
