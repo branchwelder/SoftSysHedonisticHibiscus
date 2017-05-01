@@ -25,12 +25,12 @@ void View::render() {
 }
 
 void View::_renderBlock(Position position, Block block) {
-    Square square(position.first, position.second, block.getColor());
+    SquareView square(position.first, position.second, block.getColor());
     square.render();
 }
 
 void View::_renderPlayer(Position position) {
     Color playerColor = (Color) { 0.75, 0.75, 0.75 };
-    Square square(position.first, position.second, playerColor);
+    SquareView square(position.first, position.second, playerColor);
     square.render();
 }
