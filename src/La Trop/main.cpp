@@ -43,8 +43,6 @@ View *view;
 Controller *controller;
 
 
-
-
 void initialize() {
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
