@@ -18,6 +18,7 @@ public:
 private:
     float _x;
     float _y;
+    GLuint _tex;
 };
 
 #endif /* player_view_hpp */

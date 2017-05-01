@@ -42,11 +42,12 @@ Model *model;
 View *view;
 Controller *controller;
 
+
 void initialize() {
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
     glutInitWindowPosition(WINDOW_POS_X, WINDOW_POS_Y);
-    glutCreateWindow("La Trop");
+    glutCreateWindow("Là Trop");
     
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glMatrixMode(GL_PROJECTION);
@@ -94,6 +95,8 @@ int main(int argc, char **argv) {
     glutSpecialFunc(specialKeys);
     glutReshapeFunc(reshape);
     glutIdleFunc(idleFunc);
+    
+    
 
     model = new Model();
     view = new View(model);
@@ -104,6 +107,7 @@ int main(int argc, char **argv) {
     
     // Initialize player that can be moved by the keyboard
     model->initPlayer(15,15, Player(15,15,100));
+    
 
     glutMainLoop();
 

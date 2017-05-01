@@ -10,6 +10,7 @@
 #include <GLUT/glut.h>
 #include "view.hpp"
 #include "square.hpp"
+#include <SOIL/SOIL.h>
 
 void View::render() {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -19,7 +20,7 @@ void View::render() {
         int y = it.first.second;
         Color color = it.second.getColor();
 
-        Square square(x, y, color);
+        SquareView square(x, y, color);
         square.render();
     }
     
