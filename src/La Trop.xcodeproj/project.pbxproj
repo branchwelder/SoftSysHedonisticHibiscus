@@ -17,17 +17,19 @@
 		22E94D741E92E0640026E48E /* controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E94D721E92E0640026E48E /* controller.cpp */; };
 		A2A6B4481E9459DE00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4461E9459DE00E59F70 /* player.cpp */; };
 		A2A6B44B1E9467FC00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4491E9467FC00E59F70 /* player.cpp */; };
+		A2B3490C1EA6B9F900FACEE5 /* doge.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = A2B349091EA6B5A600FACEE5 /* doge.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		227241561E8D742D0086C41D /* CopyFiles */ = {
+		A2B3490B1EA6B9D700FACEE5 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 7;
 			files = (
+				A2B3490C1EA6B9F900FACEE5 /* doge.jpg in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -50,6 +52,8 @@
 		A2A6B4471E9459DE00E59F70 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = player.hpp; path = view/player.hpp; sourceTree = "<group>"; };
 		A2A6B4491E9467FC00E59F70 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = model/player.cpp; sourceTree = "<group>"; };
 		A2A6B44A1E9467FC00E59F70 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = player.hpp; path = model/player.hpp; sourceTree = "<group>"; };
+		A2B349091EA6B5A600FACEE5 /* doge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doge.jpg; sourceTree = "<group>"; };
+		A2D813291EB6C07200AD88FA /* bork.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bork.jpg; sourceTree = "<group>"; };
 		D47EC25D1E904F510081E004 /* enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = enemy.h; path = model/enemy.h; sourceTree = "<group>"; };
 		D47EC25E1E904F6D0081E004 /* enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = enemy.h; path = view/enemy.h; sourceTree = "<group>"; };
 		D47EC2601E904FAA0081E004 /* world.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = world.h; path = model/world.h; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 				D47EC2501E904D660081E004 /* view */,
 				D47EC24F1E904D600081E004 /* model */,
 				2272415B1E8D742D0086C41D /* main.cpp */,
+				A2B349081EA6B5A600FACEE5 /* im */,
 			);
 			path = "La Trop";
 			sourceTree = "<group>";
@@ -113,6 +118,15 @@
 				22E94D731E92E0640026E48E /* controller.hpp */,
 			);
 			name = controller;
+			sourceTree = "<group>";
+		};
+		A2B349081EA6B5A600FACEE5 /* im */ = {
+			isa = PBXGroup;
+			children = (
+				A2D813291EB6C07200AD88FA /* bork.jpg */,
+				A2B349091EA6B5A600FACEE5 /* doge.jpg */,
+			);
+			path = im;
 			sourceTree = "<group>";
 		};
 		D47EC24F1E904D600081E004 /* model */ = {
@@ -154,7 +168,7 @@
 			buildPhases = (
 				227241541E8D742D0086C41D /* Sources */,
 				227241551E8D742D0086C41D /* Frameworks */,
-				227241561E8D742D0086C41D /* CopyFiles */,
+				A2B3490B1EA6B9D700FACEE5 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -307,8 +321,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = "\"/usr/local/include\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = "\"/opt/local/include\"";
 				LIBRARY_SEARCH_PATHS = "\"/usr/local/lib\"";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"/opt/local/lib\"";
+				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_CFLAGS[arch=*]" = "-Wno-deprecated";
+				OTHER_LDFLAGS = "-lSOIL";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -317,7 +335,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = "\"/usr/local/include\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = "\"/opt/local/include\"";
 				LIBRARY_SEARCH_PATHS = "\"/usr/local/lib\"";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"/opt/local/lib\"";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lSOIL";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
