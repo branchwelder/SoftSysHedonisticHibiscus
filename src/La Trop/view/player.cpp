@@ -51,7 +51,6 @@ void PlayerView::render(){
     glTexCoord2f(0,1);
     glVertex2f(_x, _y+1);
     glEnd();
-    
     glEnable(GL_DEPTH_TEST);
     glDepthMask(GL_TRUE);
     glDisable(GL_BLEND);
