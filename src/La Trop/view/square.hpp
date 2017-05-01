@@ -6,19 +6,22 @@
 //  Copyright © 2017 Hedonistic Hibiscus. All rights reserved.
 //
 
+#include <OpenGL/gl.h>
+
 #ifndef square_hpp
 #define square_hpp
 
 #include "color.hpp"
 
-class Square {
+class SquareView {
 public:
-    Square(float x, float y, Color color);
+    SquareView(float x, float y, Color color);
     void render();
 
 private:
     float _x;
     float _y;
+    GLuint _tex;
     Color _color;
 };
 
