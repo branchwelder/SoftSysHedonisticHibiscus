@@ -18,6 +18,7 @@
 		A2A6B4481E9459DE00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4461E9459DE00E59F70 /* player.cpp */; };
 		A2A6B44B1E9467FC00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4491E9467FC00E59F70 /* player.cpp */; };
 		A2B3490C1EA6B9F900FACEE5 /* doge.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = A2B349091EA6B5A600FACEE5 /* doge.jpg */; };
+		A2D8132A1EB6CE6F00AD88FA /* bork.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = A2D813291EB6C07200AD88FA /* bork.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				A2D8132A1EB6CE6F00AD88FA /* bork.jpg in CopyFiles */,
 				A2B3490C1EA6B9F900FACEE5 /* doge.jpg in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
