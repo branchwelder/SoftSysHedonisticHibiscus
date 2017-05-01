@@ -98,7 +98,7 @@ int main(int argc, char **argv) {
     view = new View(model);
     controller = new Controller(model);
     
-    model->addBlock(5, 5, Block(RED));
+    model->addBlock(5, -22, Block(RED));
     for (int i = -32; i <= 32; i++) {
         model->addBlock(i, -24, Block(SILVER));
     }

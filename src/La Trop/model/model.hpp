@@ -15,7 +15,7 @@
 #include "types.h"
 
 #define PLAYER_SPEED 5.0f //blocks per second
-#define GRAVITY -10.0f // blocks per second squared
+#define GRAVITY -15.0f // blocks per second squared
 #define PLAYER_HITBOX_X 1.0f
 #define PLAYER_HITBOX_Y 1.0f
 

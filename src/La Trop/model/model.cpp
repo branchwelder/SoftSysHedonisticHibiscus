@@ -69,24 +69,36 @@ void Model::_handlePhysics(float dt) {
         _player.getPosition().first + dx,
         _player.getPosition().second + dy
     );
-    int collision = 0;
+
+    bool xCollision = false;
+    bool yCollision = false;
     for (auto it : _world) {
-        if (checkCollision(it.first, newPosition) == 2) {
-            collision = 2;
+        int collision = checkCollision(it.first, newPosition);
+        if (collision == 1) {
+            xCollision = true;
+        }
+        if (collision == 2) {
+            yCollision = true;
+        }
+        if (xCollision && yCollision) {
             break;
         }
     }
-    if (!_player.onGround) {
-        if (collision == 2) {
+    
+    if (xCollision) {
+        dx = 0.0f;
+    }
+    if (yCollision) {
+        if (!_player.onGround) {
             _player.onGround = true;
             _player.resetPassiveVelocity();
-        } else {
-            _player.changePassiveVelocity(0.0f, dydt);
         }
-        _movePlayer(dx, dy);
-    } else {
-        _movePlayer(dx, 0.0f);
+        dy = 0.0f;
+    } else if (!_player.onGround) {
+        _player.changePassiveVelocity(0.0f, dydt);
     }
+
+    _movePlayer(dx, dy);
 }
 
 void Model::update() {
