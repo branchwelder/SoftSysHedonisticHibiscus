@@ -16,18 +16,21 @@ void View::render() {
     glClear(GL_COLOR_BUFFER_BIT);
     
     for (auto it : _model->getWorld()) {
-        int x = it.first.first;
-        int y = it.first.second;
-        Color color = it.second.getColor();
-
-        SquareView square(x, y, color);
-        square.render();
+        _renderBlock(it.first, it.second);
     }
     
-    playerPosition player = _model->getPlayer();
-    int x = player.first.first;
-    int y = player.first.second;
-    PlayerView p1(x, y);
-    p1.render();
+    Position playerPosition = _model->getPlayer().getPosition();
+    _renderPlayer(playerPosition);
     glutSwapBuffers();
+}
+
+void View::_renderBlock(Position position, Block block) {
+    Square square(position.first, position.second, block.getColor());
+    square.render();
+}
+
+void View::_renderPlayer(Position position) {
+    Color playerColor = (Color) { 0.75, 0.75, 0.75 };
+    Square square(position.first, position.second, playerColor);
+    square.render();
 }

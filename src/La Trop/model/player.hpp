@@ -9,16 +9,34 @@
 #ifndef player_model_hpp
 #define player_model_hpp
 
+#include "types.h"
+
+#define JUMP_VELOCITY 10 // blocks per second
 
 class Player {
 public:
-    Player(float x = 0, float y = 0, int health = 100) : _x(x), _y(y), _health(health) {};
+    Player(float x = 15, float y = 15, int health = 100) :
+        _position(x, y),
+        _activeVelocity(Velocity(0, 0)),
+        _passiveVelocity(Velocity(0, 0)),
+        _health(health),
+        onGround(false)
+    {};
+    Position getPosition();
+    Velocity getVelocity();
+    void setActiveVelocity(float dxdt, float dydt);
+    void changePassiveVelocity(float dxdt, float dydt);
+    void resetPassiveVelocity();
     bool getGun();
     void setGun(bool status);
+    void move(float dx, float dy);
+    void jump();
+    bool onGround;
     
 private:
-    float _x;
-    float _y;
+    Position _position;
+    Velocity _activeVelocity;
+    Velocity _passiveVelocity;
     int _health;
     bool _gun;
 };

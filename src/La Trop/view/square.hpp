@@ -11,11 +11,7 @@
 #ifndef square_hpp
 #define square_hpp
 
-struct Color {
-    float red;
-    float green;
-    float blue;
-};
+#include "color.hpp"
 
 class SquareView {
 public:
