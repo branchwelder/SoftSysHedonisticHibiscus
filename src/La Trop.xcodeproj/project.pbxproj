@@ -17,23 +17,24 @@
 		22E94D741E92E0640026E48E /* controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E94D721E92E0640026E48E /* controller.cpp */; };
 		22E966AC1EAE5F9E000D147C /* map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E966AA1EAE5F9E000D147C /* map.cpp */; };
 		22EF204E1EB58F6D00683BD4 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22EF204C1EB58F6D00683BD4 /* color.cpp */; };
+		22FA5A231EB801140026CE37 /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FA5A221EB801140026CE37 /* libSOIL.a */; };
+		22FA5A261EB801850026CE37 /* bork.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22FA5A241EB801850026CE37 /* bork.jpg */; };
+		22FA5A271EB801850026CE37 /* doge.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22FA5A251EB801850026CE37 /* doge.jpg */; };
 		A2A6B4481E9459DE00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4461E9459DE00E59F70 /* player.cpp */; };
 		A2A6B44B1E9467FC00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4491E9467FC00E59F70 /* player.cpp */; };
-		A2B3490C1EA6B9F900FACEE5 /* doge.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = A2B349091EA6B5A600FACEE5 /* doge.jpg */; };
-		A2D8132A1EB6CE6F00AD88FA /* bork.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = A2D813291EB6C07200AD88FA /* bork.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A2B3490B1EA6B9D700FACEE5 /* CopyFiles */ = {
+		227241561E8D742D0086C41D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
 			files = (
-				A2D8132A1EB6CE6F00AD88FA /* bork.jpg in CopyFiles */,
-				A2B3490C1EA6B9F900FACEE5 /* doge.jpg in CopyFiles */,
+				22FA5A261EB801850026CE37 /* bork.jpg in CopyFiles */,
+				22FA5A271EB801850026CE37 /* doge.jpg in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -57,12 +58,13 @@
 		22EF204B1EB579D000683BD4 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = types.h; path = model/types.h; sourceTree = "<group>"; };
 		22EF204C1EB58F6D00683BD4 /* color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = color.cpp; path = view/color.cpp; sourceTree = "<group>"; };
 		22EF204D1EB58F6D00683BD4 /* color.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = color.hpp; path = view/color.hpp; sourceTree = "<group>"; };
+		22FA5A221EB801140026CE37 /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = ../../../../../opt/local/lib/libSOIL.a; sourceTree = "<group>"; };
+		22FA5A241EB801850026CE37 /* bork.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bork.jpg; path = "La Trop/im/bork.jpg"; sourceTree = "<group>"; };
+		22FA5A251EB801850026CE37 /* doge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = doge.jpg; path = "La Trop/im/doge.jpg"; sourceTree = "<group>"; };
 		A2A6B4461E9459DE00E59F70 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = view/player.cpp; sourceTree = "<group>"; };
 		A2A6B4471E9459DE00E59F70 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = player.hpp; path = view/player.hpp; sourceTree = "<group>"; };
 		A2A6B4491E9467FC00E59F70 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = model/player.cpp; sourceTree = "<group>"; };
 		A2A6B44A1E9467FC00E59F70 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = player.hpp; path = model/player.hpp; sourceTree = "<group>"; };
-		A2B349091EA6B5A600FACEE5 /* doge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doge.jpg; sourceTree = "<group>"; };
-		A2D813291EB6C07200AD88FA /* bork.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bork.jpg; sourceTree = "<group>"; };
 		D47EC25D1E904F510081E004 /* enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = enemy.h; path = model/enemy.h; sourceTree = "<group>"; };
 		D47EC25E1E904F6D0081E004 /* enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = enemy.h; path = view/enemy.h; sourceTree = "<group>"; };
 		D47EC2601E904FAA0081E004 /* world.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = world.h; path = model/world.h; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			files = (
 				220952D61E9044A600C41ED7 /* OpenGL.framework in Frameworks */,
 				220952D71E9044AB00C41ED7 /* GLUT.framework in Frameworks */,
+				22FA5A231EB801140026CE37 /* libSOIL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +88,7 @@
 		220952D21E9042E900C41ED7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22FA5A221EB801140026CE37 /* libSOIL.a */,
 				220952D51E9044A600C41ED7 /* OpenGL.framework */,
 				220952D31E9042E900C41ED7 /* GLUT.framework */,
 			);
@@ -94,6 +98,8 @@
 		2272414F1E8D742D0086C41D = {
 			isa = PBXGroup;
 			children = (
+				22FA5A241EB801850026CE37 /* bork.jpg */,
+				22FA5A251EB801850026CE37 /* doge.jpg */,
 				2272415A1E8D742D0086C41D /* La Trop */,
 				227241591E8D742D0086C41D /* Products */,
 				220952D21E9042E900C41ED7 /* Frameworks */,
@@ -116,7 +122,6 @@
 				D47EC2501E904D660081E004 /* view */,
 				D47EC24F1E904D600081E004 /* model */,
 				2272415B1E8D742D0086C41D /* main.cpp */,
-				A2B349081EA6B5A600FACEE5 /* im */,
 			);
 			path = "La Trop";
 			sourceTree = "<group>";
@@ -137,13 +142,6 @@
 				22E966AB1EAE5F9E000D147C /* map.hpp */,
 			);
 			name = map;
-		A2B349081EA6B5A600FACEE5 /* im */ = {
-			isa = PBXGroup;
-			children = (
-				A2D813291EB6C07200AD88FA /* bork.jpg */,
-				A2B349091EA6B5A600FACEE5 /* doge.jpg */,
-			);
-			path = im;
 			sourceTree = "<group>";
 		};
 		D47EC24F1E904D600081E004 /* model */ = {
@@ -188,7 +186,7 @@
 			buildPhases = (
 				227241541E8D742D0086C41D /* Sources */,
 				227241551E8D742D0086C41D /* Frameworks */,
-				A2B3490B1EA6B9D700FACEE5 /* CopyFiles */,
+				227241561E8D742D0086C41D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -342,13 +340,15 @@
 		227241601E8D742D0086C41D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = "\"/usr/local/include\"";
-				"HEADER_SEARCH_PATHS[arch=*]" = "\"/opt/local/include\"";
-				LIBRARY_SEARCH_PATHS = "\"/usr/local/lib\"";
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"/opt/local/lib\"";
-				ONLY_ACTIVE_ARCH = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"/usr/local/include\"",
+					"\"/opt/local/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"/usr/local/lib\"",
+					"\"/opt/local/lib\"",
+				);
 				"OTHER_CFLAGS[arch=*]" = "-Wno-deprecated";
-				OTHER_LDFLAGS = "-lSOIL";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -356,12 +356,14 @@
 		227241611E8D742D0086C41D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = "\"/usr/local/include\"";
-				"HEADER_SEARCH_PATHS[arch=*]" = "\"/opt/local/include\"";
-				LIBRARY_SEARCH_PATHS = "\"/usr/local/lib\"";
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"/opt/local/lib\"";
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-lSOIL";
+				HEADER_SEARCH_PATHS = (
+					"\"/usr/local/include\"",
+					"\"/opt/local/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"/usr/local/lib\"",
+					"\"/opt/local/lib\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
