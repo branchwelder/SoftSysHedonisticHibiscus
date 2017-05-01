@@ -31,7 +31,6 @@ void SquareView::render(){
     // Bind texture to the texture target (GL_TEXTURE_2D)
     glBindTexture(GL_TEXTURE_2D, _tex);
     
-    
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
