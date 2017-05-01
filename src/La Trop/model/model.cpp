@@ -24,7 +24,7 @@ void Model::addBlock(float x, float y, Block block) {
     _world.insert(std::make_pair(std::make_pair(x, y), block));
 }
 
-int Model::checkCollision(Position corner1, Position corner2) {
+int Model::_checkCollision(Position corner1, Position corner2) {
     float d1x = corner2.first - (corner1.first + 1);
     float d1y = corner2.second - (corner1.second + 1);
     float d2x = corner1.first - (corner2.first + 1);
@@ -36,11 +36,19 @@ int Model::checkCollision(Position corner1, Position corner2) {
     if (d2x > 0.0f || d2y > 0.0f) {
         return 0;
     }
-    if (std::abs(corner1.first - corner2.first) > std::abs(corner1.second - corner2.second)) {
+
+    float xDiff = std::abs(corner1.first - corner2.first);
+    float yDiff = std::abs(corner1.second - corner2.second);
+    if (xDiff > yDiff) {
         return 1;
     } else {
         return 2;
     }
+}
+
+float Model::_handleCollision(float moving, float stationary) {
+    float diff = stationary - moving + (moving > stationary ? 1 : -1);
+    return diff;
 }
 
 void Model::_movePlayer(float dx, float dy) {
@@ -73,28 +81,29 @@ void Model::_handlePhysics(float dt) {
     bool xCollision = false;
     bool yCollision = false;
     for (auto it : _world) {
-        int collision = checkCollision(it.first, newPosition);
-        if (collision == 1) {
+        int collision = _checkCollision(it.first, newPosition);
+        if (collision == 1 && !xCollision) {
             xCollision = true;
+            dx += _handleCollision(newPosition.first, it.first.first);
         }
-        if (collision == 2) {
+        if (collision == 2 && !yCollision) {
             yCollision = true;
+            dy += _handleCollision(newPosition.second, it.first.second);
         }
         if (xCollision && yCollision) {
             break;
         }
     }
-    
-    if (xCollision) {
-        dx = 0.0f;
-    }
+
     if (yCollision) {
         if (!_player.onGround) {
             _player.onGround = true;
             _player.resetPassiveVelocity();
         }
-        dy = 0.0f;
-    } else if (!_player.onGround) {
+    } else {
+        if (_player.onGround) {
+            _player.onGround = false;
+        }
         _player.changePassiveVelocity(0.0f, dydt);
     }
 

@@ -30,8 +30,6 @@ public:
     BlockMap getWorld();
     Player& getPlayer();
     void addBlock(float x, float y, Block block);
-    int checkBlock(float x, float y);
-    int checkCollision(Position corner1, Position corner2);
     void updateKeyState(unsigned char key, bool val);
     void update();
 
@@ -40,9 +38,11 @@ private:
     Player _player;
     int _time;
     bool _keyStates[256];
+    int _checkCollision(Position corner1, Position corner2);
+    float _handleCollision(float moving, float stationary);
+    void _movePlayer(float x, float y);
     void _processKeys();
     void _handlePhysics(float dt);
-    void _movePlayer(float x, float y);
 };
 
 #endif /* model_hpp */
