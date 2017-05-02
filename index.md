@@ -6,15 +6,17 @@
 We implemented a game using OpenGL in C++. This game consists of a player who can place two portals which teleport the player to the other location on contact. The world where this player exists is affected by gravity and other obstacles, however they can jump around and teleport to solve levels.
 
 ## What we set out to accomplish
-The main goal that we started with was learning about C++ and OpenGL.
+The main goal of this project was to develop a game in C++ using OpenGL to render sprites and graphics. The finished game consists of player movement from a two-dimensional, top-down perspective. A mechanic we implemented are portals that allow the player to teleport to different locations. Stretch goals that we met were improved graphics using textures and a more lifelike physics engine that includes gravity on the player.
 
 ## How we planned on accomplishing it
-Provide context for your project by describing the broader space in which it is situated. This section will likely draw upon your annotated bibliography. You've already collected this knowledge and shown us you understand it, now frame it for an external audience.
+Our [sprint plan](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus/projects/1) can be viewed on GitHub projects. We organized our work using this system, as it is fairly new and we wanted to try it out.
+
+We wanted to explore video game development from a lower level instead of using some existing frameworks, such as Pygame or Unity. As such, we decided to use some older technology (GLUT's most "recent" release was )
 
 ## What was accomplished
 We set out to implement some core features that are found in games. Player movement is done with the A and D keys, while jumping is accomplished with W. Q and E fire a portal, and if you already have one Q portal on the map, pressing Q again will replace the position to an updated location next to the player. Levels are stored as .txt files and can be edited by the end user to create custom and unique maps. In these files, 0s represent blank space, while 1s represent a block. The player always starts in the same position, however if they have no ground under them they will fall because of physics. For more in-depth explanation about some of the extra features we worked on, continue reading.
 
-### OpenGL graphics and textures
+### _OpenGL graphics and textures_
 The largest focus for this project was exploring and learning about OpenGL and GLUT, rendering systems that are available for many languages but in this case, for C++. With GLUT/OpenGL, the main loop takes over the program (using `glutMainLoop()`) and is the reason for frame redraws and updates. This updates the model and renders the view every time it runs through the game loop.
 
 This way of thinking of course caused us some initial trouble. For example, once the glut main loop starts running, printing to cout does not work as expected (without some changes). As such, we thought everything was constantly broken because all the debug messages were never showing up. However, once we had a grasp of the `glutMainLoop()`, we were set.
@@ -51,7 +53,7 @@ glVertex2f(_x, _y+1);
 glEnd();
 ```
 
-### Physics
+### _Physics_
 Instead of handling player movement as a discrete number of blocks per keypress, we switched to players having acceleration and velocities, making movement seem a little more fluid. The way we process keypresses now sets the velocity of a player, as shown below:
 ```
 void Model::_processKeys() {
@@ -110,11 +112,12 @@ void Model::_handlePhysics(float dt) {
 }
 ```
 
-### Developing in Xcode
+### _Developing in Xcode_
 Every member of the team had a Mac, so we decided as a team that this might be an opportune time to learn the ins and outs of Xcode. To do this, we built the whole project in the environment, using the command line as little as possible to fully immerse ourselves. This turned out to be a bit of a double edged sword. While it was super useful to compile and run the game, it also meant that we did not have a way to build for other environments as easily. As well, a merge conflict with Xcode project configuration settings turned into a monster that was not as easily resolved. In general though, C++ development with Xcode was fairly straightforward and very nice for building a test package without much extra thought (just use CMD+r).
 
-### C++ instead of C
-We also approached this project more in the mindset of using C++ instead of C. As it turns out, the object-oriented paradigm is better suited for game development than pure C. Mainly, we used public and private values and functions to more conveniently organize code. We also split up files into the Model, View, Control model that is sort of standard in all game programming.
+### _C++ instead of C_
+We also approached this project more in the mindset of using C++ instead of C. As it turns out, the object-oriented paradigm is better suited for game development than pure C. Mainly, we used public and private values and functions to more conveniently organize code. We also split up files into the Model, View, Control model that is standard in all game programming.
 
 ## The completed game
-Provide evidence demonstrating that what you built works. Though the details will be different for each project, screenshots and video are likely helpful. Include graphs or other data if appropriate.
+A more complete look at the game can be found in [our repo](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus). However, if clicking links is too difficult, don't worry, here is a gif of the player falling because of gravity.
+![](reports/resources/)
