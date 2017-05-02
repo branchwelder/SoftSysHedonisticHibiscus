@@ -120,4 +120,5 @@ We also approached this project more in the mindset of using C++ instead of C. A
 
 ## The completed game
 A more complete look at the game can be found in [our repo](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus). However, if clicking links is too difficult, don't worry, here is a gif of the player falling because of gravity.
+
 ![gravity.gif](reports/resources/gravity.gif)
