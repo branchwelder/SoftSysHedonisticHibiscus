@@ -22,7 +22,7 @@ public:
         _health(health),
         onGround(false)
     {};
-    Position getPosition();
+    Vector getPosition();
     Velocity getVelocity();
     void setActiveVelocity(float dxdt, float dydt);
     void changePassiveVelocity(float dxdt, float dydt);
@@ -34,7 +34,7 @@ public:
     bool onGround;
     
 private:
-    Position _position;
+    Vector _position;
     Velocity _activeVelocity;
     Velocity _passiveVelocity;
     int _health;

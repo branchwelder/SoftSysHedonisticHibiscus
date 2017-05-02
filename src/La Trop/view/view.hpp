@@ -22,8 +22,9 @@ public:
 
 private:
     Model *_model;
-    void _renderBlock(Position position, Block block);
-    void _renderPlayer(Position position);
+    void _renderBlock(Vector position, Block block);
+    void _renderPlayer();
+    void _renderPortal();
 };
 
 #endif /* view_hpp */

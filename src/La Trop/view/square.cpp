@@ -15,24 +15,24 @@
 #include "../model/block.hpp"
 
 SquareView::SquareView(float x, float y, Color color) : _x(x), _y(y), _color(color) {
-    _tex = SOIL_load_OGL_texture
-    (
-     "doge.jpg",
-     SOIL_LOAD_AUTO,
-     SOIL_CREATE_NEW_ID,
-     SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
-     );
+//    _tex = SOIL_load_OGL_texture
+//    (
+//     "doge.jpg",
+//     SOIL_LOAD_AUTO,
+//     SOIL_CREATE_NEW_ID,
+//     SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
+//     );
 }
 
 void SquareView::render(){
     // Enable 2D textures
-    glEnable(GL_TEXTURE_2D);
-    
-    // Bind texture to the texture target (GL_TEXTURE_2D)
-    glBindTexture(GL_TEXTURE_2D, _tex);
-    
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//    glEnable(GL_TEXTURE_2D);
+//    
+//    // Bind texture to the texture target (GL_TEXTURE_2D)
+//    glBindTexture(GL_TEXTURE_2D, _tex);
+//    
+//    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+//    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -40,14 +40,14 @@ void SquareView::render(){
     glDisable(GL_DEPTH_TEST);
     
     glBegin(GL_POLYGON);
-    glColor3f(255,255,255);
-    glTexCoord2f(0,0);
+    glColor3f(_color.red, _color.green, _color.blue);
+//    glTexCoord2f(0,0);
     glVertex2f(_x,_y);
-    glTexCoord2f(1,0);
+//    glTexCoord2f(1,0);
     glVertex2f(_x+1, _y);
-    glTexCoord2f(1,1);
+//    glTexCoord2f(1,1);
     glVertex2f(_x+1, _y+1);
-    glTexCoord2f(0,1);
+//    glTexCoord2f(0,1);
     glVertex2f(_x, _y+1);
     glEnd();
     glEnable(GL_DEPTH_TEST);
