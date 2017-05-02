@@ -34,17 +34,21 @@ We created a scrum-style [sprint plan](https://github.com/hannahtwiggsmith/SoftS
 - ~~Physics engine (jumping/gravity)~~ Done!
 - Portals
 
-We wanted to explore video game development from a lower level instead of using existing frameworks/engines (like Unity or Unreal) to get a better feel for how everything was supposed to work together and to learn more about OpenGL. As such, we decided to use some older technology (specifically GLUT, which was last updated in 1998). This meant we had to learn about frame buffers and the logic behind rendering, as well as polygons and textures, without "cheating" by using a framework that easily rendered objects for us. Much of the knowledge we gained for this we found at [this tutorial](http://www.lighthouse3d.com/tutorials/glut-tutorial/) and trial and error, due to the surprising lack of resources on the internet around this topic. The initial setup of the game environment was quite a challenge using GLUT, but once we had a functioning Model/View/Controller (MVC), it was easy to build off the component parts to complete our goals. The initial physics engine was a contained a lot of "rough" math and we built on it in a similar fashion.
+We wanted to explore video game development from a lower level instead of using existing frameworks/engines (like Unity or Unreal) to get a better feel for how everything was supposed to work together and to learn more about OpenGL. As such, we decided to use some older technology (specifically GLUT, which was last updated in 1998). This meant we had to learn about frame buffers and the logic behind rendering, as well as polygons and textures, without "cheating" by using a framework that easily rendered objects for us. Much of the guidance for this was found at [this tutorial](http://www.lighthouse3d.com/tutorials/glut-tutorial/) and through trial and error, due to the surprising lack of resources on the internet around this topic. The initial setup of the game environment was quite a challenge using GLUT, but once we had a functioning Model/View/Controller (MVC), it was easy to build off the component parts to complete our goals. The initial physics engine was a contained a lot of "rough" math and we built on it in a similar fashion.
 
-## Results
-Player movement is done with the A and D keys, while jumping is accomplished with W. Q and E fire portals, and if you already have one Q portal on the map, pressing Q again will replace the position to an updated location next to the player. Levels are stored as .txt files and can be edited by the end user to create custom and unique maps. In these files, 0s represent blank space, while 1s represent a block. The player always starts in the same position, however if they have no ground under them they will fall because of physics. For more in-depth explanation about some of the extra features we worked on, continue reading.
+### Player Movement
+Player movement is done with via user input (the A and D keys), while jumping is accomplished with W. Q and E fire portals. If a Q- or E-portal already exists on the map, pressing Q or E again will update its position. The logic for this exists in our controller file.
+
+### Level Generation
+Levels are stored as .txt files and can be edited by the end user to create custom and unique maps. In these files, 0s represent blank space, while 1s represent a block. Our game window is currently set to 64x48 10-pixel blocks, which corresponds to a 640x480 pixel window.
 
 ### OpenGL Graphics and Textures
-The largest focus for this project was to explore OpenGL and GLUT, which are rendering systems that are available for many languages (our focus was C++). With GLUT/OpenGL, the main loop takes over the program (using `glutMainLoop()`) and is the reason for frame redraws and updates. This updates the model and renders the view every time it runs through the game loop.
+The largest focus for this project was to explore OpenGL and GLUT, which are rendering systems that are available for many languages (our focus was C++). With GLUT/OpenGL, the GLUT main loop takes over the program when it is called (using `glutMainLoop()`) and handles frame redraws and updates. Each time through the loop, the model is updated and the view is rendered to reflect those updates.
 
-This way of thinking of course caused us some initial trouble. For example, once the glut main loop starts running, printing to std::cout does not work as expected (as the main glut loop never returns). As such, we thought everything was constantly broken because all the debug messages were never showing up. However, once we had a grasp of the `glutMainLoop()`, we were set.
+GLUT caused us some initial trouble. For example, once the GLUT main loop takes control, printing to std::cout is blocked (as the main glut loop never returns) which prevents us from debugging with print statements. Before we realized this, we thought everything was broken because our debug messages were never displaying in the consols. 
 
-Another component we worked with was SOIL (simple OpenGL image library) in OpenGL. SOIL is much more straightforward than the "pure" OpenGL way of rendering textures, which made our lives considerably easier (~5 lines of code with SOIL vs. ~300 lines without). This meant that we could create a player texture and render it with this code:
+One of the main resources we worked with was SOIL (the Simple OpenGL Image Library) in OpenGL. SOIL is much more straightforward than the "pure" OpenGL way of rendering textures, which made our lives considerably easier (~25 lines of code with SOIL vs. ~300 lines with pure OpenGL). This meant that we could load a texture and render it with this function:
+
 ```cpp
 _tex = SOIL_load_OGL_texture
     (
@@ -54,7 +58,9 @@ _tex = SOIL_load_OGL_texture
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
      );
 ```
-This code loads the texture and stores it, which is then rendered onto a polygon with the following code:
+
+Every time the model was updated, everything (the player, environment blocks, and enemies) was redrawn with this code, which binds the texture to a polygon and draws it at the `_x` and `_y` coordinates:
+
 ```cpp
 // Enable 2D textures
 glEnable(GL_TEXTURE_2D);
@@ -141,7 +147,7 @@ Every member of the team had a Mac and no experience working with Xcode, so we d
 ### Exploring C++
 For this project, we switched from C to C++, mainly because we wanted to gain experience with a new language and C++'s object-oriented features are much better suited for game development than pure C. This allowed us to organize our files into the Model-View-Controller structure that is standard for game programming. We used public and private values and functions to more conveniently organize code. 
 
-## The Final Game
+## Results
 The final version of Là Trop can be found in [our git repo](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus). Here's a gif of it running:
 
 ![gravity.gif](reports/resources/gravity.gif)
