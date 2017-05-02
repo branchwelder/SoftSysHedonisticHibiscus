@@ -16,7 +16,7 @@ The main goal of this project was to develop a game in C++ using OpenGL to rende
 - [The OpenGL Documentation](https://www.opengl.org/) was frequently visited as we were trying to understand OpenGL's plethora of functions
 - [The Xcode documentation](https://developer.apple.com/reference/) was also useful during our experience with Xcode
 
-We didn't use anything significant aside from these resources, as much of our development process was trial and error. As usual, we als used Google, StackOverflow, and the OpenGL forums to answer many of our questions during development.
+We didn't use anything significant aside from these resources, as much of our development process was trial and error. As usual, we used Google, StackOverflow, and the OpenGL forums to answer many of our one-off questions during development.
 
 ## Implementation
 We created a scrum-style [sprint plan](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus/projects/1) that can be viewed on GitHub projects. We organized our work using this system instead of Trello because it is fairly new and we wanted to try it out. We separated our work into one-week sprints and created issues for the work we wanted to get done each week, as well as some stretch goals:
@@ -34,13 +34,13 @@ We created a scrum-style [sprint plan](https://github.com/hannahtwiggsmith/SoftS
 - ~~Physics engine (jumping/gravity)~~ Done!
 - Portals
 
-We wanted to explore video game development from a lower level instead of using existing frameworks/engines (like Unity or Unreal) to get a better feel for how everything was supposed to work together and to learn more about OpenGL. As such, we decided to use some older technology (specifically GLUT, which was last updated was in 1998). This meant we had to learn about frame redraw and some of the logic behind rendering, as well as polygons and textures, without "cheating" by using a framework that easily rendered objects for us. Much of the knowledge we gained for this we found at [this tutorial](http://www.lighthouse3d.com/tutorials/glut-tutorial/), due to the surprising lack of resources on the internet around this topic. The initial setup of the game environment was quite a challenge using GLUT, but once we had a functioning Model/View/Controller (MVC), it was easy to build off the component parts to complete our goals. The initial physics engine was a contained a lot of "rough" math and we built on it in a similar fashion.
+We wanted to explore video game development from a lower level instead of using existing frameworks/engines (like Unity or Unreal) to get a better feel for how everything was supposed to work together and to learn more about OpenGL. As such, we decided to use some older technology (specifically GLUT, which was last updated in 1998). This meant we had to learn about frame buffers and the logic behind rendering, as well as polygons and textures, without "cheating" by using a framework that easily rendered objects for us. Much of the knowledge we gained for this we found at [this tutorial](http://www.lighthouse3d.com/tutorials/glut-tutorial/) and trial and error, due to the surprising lack of resources on the internet around this topic. The initial setup of the game environment was quite a challenge using GLUT, but once we had a functioning Model/View/Controller (MVC), it was easy to build off the component parts to complete our goals. The initial physics engine was a contained a lot of "rough" math and we built on it in a similar fashion.
 
-## What was accomplished
-We set out to implement some core features that are found in games. Player movement is done with the A and D keys, while jumping is accomplished with W. Q and E fire a portal, and if you already have one Q portal on the map, pressing Q again will replace the position to an updated location next to the player. Levels are stored as .txt files and can be edited by the end user to create custom and unique maps. In these files, 0s represent blank space, while 1s represent a block. The player always starts in the same position, however if they have no ground under them they will fall because of physics. For more in-depth explanation about some of the extra features we worked on, continue reading.
+## Results
+Player movement is done with the A and D keys, while jumping is accomplished with W. Q and E fire portals, and if you already have one Q portal on the map, pressing Q again will replace the position to an updated location next to the player. Levels are stored as .txt files and can be edited by the end user to create custom and unique maps. In these files, 0s represent blank space, while 1s represent a block. The player always starts in the same position, however if they have no ground under them they will fall because of physics. For more in-depth explanation about some of the extra features we worked on, continue reading.
 
-### _OpenGL graphics and textures_
-The largest focus for this project was exploring and learning about OpenGL and GLUT, rendering systems that are available for many languages, but in this case more in the context of C++. With GLUT/OpenGL, the main loop takes over the program (using `glutMainLoop()`) and is the reason for frame redraws and updates. This updates the model and renders the view every time it runs through the game loop.
+### OpenGL Graphics and Textures
+The largest focus for this project was to explore OpenGL and GLUT, which are rendering systems that are available for many languages (our focus was C++). With GLUT/OpenGL, the main loop takes over the program (using `glutMainLoop()`) and is the reason for frame redraws and updates. This updates the model and renders the view every time it runs through the game loop.
 
 This way of thinking of course caused us some initial trouble. For example, once the glut main loop starts running, printing to std::cout does not work as expected (as the main glut loop never returns). As such, we thought everything was constantly broken because all the debug messages were never showing up. However, once we had a grasp of the `glutMainLoop()`, we were set.
 
@@ -76,7 +76,7 @@ glVertex2f(_x, _y+1);
 glEnd();
 ```
 
-### _Physics_
+### Physics Engine
 Instead of handling player movement as a discrete number of blocks per keypress, we switched to players having acceleration and velocities, making movement seem a little more fluid. The way we process keypresses now sets the velocity of a player, as shown below:
 ```cpp
 void Model::_processKeys() {
@@ -90,7 +90,7 @@ void Model::_processKeys() {
 }
 ```
 
-As well, we process gravity if there is no block underneath the player. This is a meaty function, but the big takeaways are that there is a dy/dt multiplier for gravity, and this affects the player no matter where they are, unless they are on the bottom of the map or intersecting with another block.
+We process gravity if there is no block underneath the player. This is a meaty function, but the big takeaways are that there is a dy/dt multiplier for gravity, and this affects the player no matter where they are, unless they are on the bottom of the map or intersecting with another block.
 
 ```cpp
 void Model::_handlePhysics(float dt) {
@@ -135,10 +135,10 @@ void Model::_handlePhysics(float dt) {
 }
 ```
 
-### _Developing in Xcode_
+### Developing in Xcode
 Every member of the team had a Mac and no experience working with Xcode, so we decided to use Xcode as our development environment. We created the entirety of the project in the environment, using the command line as little as possible to fully immerse ourselves. Although we learned quite a bit about linking libraries and managing a large project with Xcode, we have ultimately decided that the trouble it caused us wasn't worth the effort. While it was easy to compile and run the game using the builtin functionality, it also meant that we did not have a way to build for other environments as easily. We also experienced a serious merge conflict within the Xcode project configuration settings at a critical point in implementation that took us multiple hours to resolve. In general, local C++ development with Xcode was fairly straightforward and very nice for building a test package without much extra thought (just use CMD+r), but if we were going to use it again in the future we would better research the intricacies of collborating with it using version control.
 
-### _Exploring C++_
+### Exploring C++
 For this project, we switched from C to C++, mainly because we wanted to gain experience with a new language and C++'s object-oriented features are much better suited for game development than pure C. This allowed us to organize our files into the Model-View-Controller structure that is standard for game programming. We used public and private values and functions to more conveniently organize code. 
 
 ## The Final Game
