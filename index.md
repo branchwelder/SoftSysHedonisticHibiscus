@@ -6,26 +6,25 @@
 Là Trop is a two-dimensional, Portal-inspired platformer created in C++ and OpenGL. The player can place two portals which teleport them to the other location on contact. The game world is viewed from the side, and the player is affected by gravity, obstacles, and enemies. They must teleport around to complete levels.
 
 ## Background
-The main goal of this project was to develop a game in C++ using OpenGL to render sprites and graphics. The finished game consists of player movement from a two-dimensional, side-view perspective. This project was motivated by the team's collective interest in game development and the possibility of learning a new language (C++). 
-
+The main goal of this project was to develop a game in C++ using OpenGL to render sprites and graphics. The finished game consists of player movement from a two-dimensional, side-view perspective. This project was motivated by the team's collective interest in game development and the possibility of learning a new language (C++). Because the goal of this project was to explore the many components of game development, we emphasized this over finalizing a game. Our final project is functional, but not very interesting to a player (we don't have any puzzles to solve). If this project was to continue, we would focus on creating an executable that would be playable from start to finish, but ultimately that was beyond the scope of this project.
 
 ## Implementation
 We created a scrum-style [sprint plan](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus/projects/1) that can be viewed on GitHub projects. We organized our work using this system instead of Trello because it is fairly new and we wanted to try it out. We separated our work into one-week sprints and created issues for the work we wanted to get done each week, as well as some stretch goals:
 
-*Project goals:*
-- Object collision
-- User input
-- Basic OpenGL rendering
-- Model/View/Controller scaffolding
-- Reading a level from a text file
+**Project goals:**
+- ~~Object collision~~ Done!
+- ~~User input~~ Done!
+- ~~Basic OpenGL rendering~~ Done!
+- ~~Model/View/Controller scaffolding~~ Done!
+- ~~Reading a level from a text file~~ Done!
 - Enemies
 
-*Stretch goals:*
-- Textures
-- Physics engine (jumping/gravity)
+**Stretch goals:**
+- ~~Textures~~ Done!
+- ~~Physics engine (jumping/gravity)~~ Done!
 - Portals
 
-We wanted to explore video game development from a lower level instead of using some existing frameworks, such as Pygame or Unity. As such, we decided to use some older technology (GLUT's last release was in 1998). This meant we had to learn about frame redraw and some of the logic behind rendering, as well as polygons and textures, without cheating by using a framework that easily rendered objects for us. Much of the knowledge we gained for this we found at [this tutorial](http://www.lighthouse3d.com/tutorials/glut-tutorial/). Once we got around the behemoth of a problem that was implementing things using GLUT, a lot of our work was more manageable with the knowledge we gained about [C++](https://learnxinyminutes.com/docs/c++/). From there, physics was a bit of loosey-goosey math and we built on from there in similar fashion.
+We wanted to explore video game development from a lower level instead of using existing frameworks/engines (like Unity or Unreal) to get a better feel for how everything was supposed to work together and to learn more about OpenGL. As such, we decided to use some older technology (specifically GLUT, which was last updated was in 1998). This meant we had to learn about frame redraw and some of the logic behind rendering, as well as polygons and textures, without "cheating" by using a framework that easily rendered objects for us. Much of the knowledge we gained for this we found at [this tutorial](http://www.lighthouse3d.com/tutorials/glut-tutorial/), due to the surprising lack of resources on the internet around this topic. The initial setup of the game environment was quite a challenge using GLUT, and a lot of our work was more manageable with the knowledge we gained about [C++](https://learnxinyminutes.com/docs/c++/). From there, physics was a bit of loosey-goosey math and we built on from there in similar fashion.
 
 ## What was accomplished
 We set out to implement some core features that are found in games. Player movement is done with the A and D keys, while jumping is accomplished with W. Q and E fire a portal, and if you already have one Q portal on the map, pressing Q again will replace the position to an updated location next to the player. Levels are stored as .txt files and can be edited by the end user to create custom and unique maps. In these files, 0s represent blank space, while 1s represent a block. The player always starts in the same position, however if they have no ground under them they will fall because of physics. For more in-depth explanation about some of the extra features we worked on, continue reading.
