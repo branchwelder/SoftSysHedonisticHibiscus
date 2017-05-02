@@ -17,9 +17,9 @@
 		22E94D741E92E0640026E48E /* controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E94D721E92E0640026E48E /* controller.cpp */; };
 		22E966AC1EAE5F9E000D147C /* map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E966AA1EAE5F9E000D147C /* map.cpp */; };
 		22EF204E1EB58F6D00683BD4 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22EF204C1EB58F6D00683BD4 /* color.cpp */; };
-		22FA5A231EB801140026CE37 /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FA5A221EB801140026CE37 /* libSOIL.a */; };
 		22FA5A261EB801850026CE37 /* bork.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22FA5A241EB801850026CE37 /* bork.jpg */; };
 		22FA5A271EB801850026CE37 /* doge.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22FA5A251EB801850026CE37 /* doge.jpg */; };
+		22FA5A2D1EB80AC70026CE37 /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FA5A221EB801140026CE37 /* libSOIL.a */; };
 		A2A6B4481E9459DE00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4461E9459DE00E59F70 /* player.cpp */; };
 		A2A6B44B1E9467FC00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4491E9467FC00E59F70 /* player.cpp */; };
 /* End PBXBuildFile section */
@@ -76,9 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22FA5A2D1EB80AC70026CE37 /* libSOIL.a in Frameworks */,
 				220952D61E9044A600C41ED7 /* OpenGL.framework in Frameworks */,
 				220952D71E9044AB00C41ED7 /* GLUT.framework in Frameworks */,
-				22FA5A231EB801140026CE37 /* libSOIL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +364,7 @@
 					"\"/usr/local/lib\"",
 					"\"/opt/local/lib\"",
 				);
+				"OTHER_LDFLAGS[arch=*]" = lSOIL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

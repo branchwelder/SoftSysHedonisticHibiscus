@@ -17,7 +17,7 @@
 SquareView::SquareView(float x, float y, Color color) : _x(x), _y(y), _color(color) {
     _tex = SOIL_load_OGL_texture
     (
-     "bork.jpg",
+     "doge.jpg",
      SOIL_LOAD_AUTO,
      SOIL_CREATE_NEW_ID,
      SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
