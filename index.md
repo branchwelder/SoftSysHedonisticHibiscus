@@ -11,7 +11,7 @@ The main goal of this project was to develop a game in C++ using OpenGL to rende
 ## How we planned on accomplishing it
 Our [sprint plan](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus/projects/1) can be viewed on GitHub projects. We organized our work using this system, as it is fairly new and we wanted to try it out.
 
-We wanted to explore video game development from a lower level instead of using some existing frameworks, such as Pygame or Unity. As such, we decided to use some older technology (GLUT's most "recent" release was )
+We wanted to explore video game development from a lower level instead of using some existing frameworks, such as Pygame or Unity. As such, we decided to use some older technology (GLUT's most "recent" release was sometime pre-2000s). This meant we had to learn about frame redraw and some of the logic behind rendering, as well as polygons and textures, without cheating by using a framework that easily rendered objects for us. Much of the knowledge we gained for this we found at [this tutorial](http://www.lighthouse3d.com/tutorials/glut-tutorial/). Once we got around the behemoth of a problem that was implementing things using GLUT, a lot of our work was more manageable with the knowledge we learned about [C++](https://learnxinyminutes.com/docs/c++/). From there, physics was a bit of loosey-goosey math and we built on from there in similar fashion.
 
 ## What was accomplished
 We set out to implement some core features that are found in games. Player movement is done with the A and D keys, while jumping is accomplished with W. Q and E fire a portal, and if you already have one Q portal on the map, pressing Q again will replace the position to an updated location next to the player. Levels are stored as .txt files and can be edited by the end user to create custom and unique maps. In these files, 0s represent blank space, while 1s represent a block. The player always starts in the same position, however if they have no ground under them they will fall because of physics. For more in-depth explanation about some of the extra features we worked on, continue reading.
@@ -19,7 +19,7 @@ We set out to implement some core features that are found in games. Player movem
 ### _OpenGL graphics and textures_
 The largest focus for this project was exploring and learning about OpenGL and GLUT, rendering systems that are available for many languages but in this case, for C++. With GLUT/OpenGL, the main loop takes over the program (using `glutMainLoop()`) and is the reason for frame redraws and updates. This updates the model and renders the view every time it runs through the game loop.
 
-This way of thinking of course caused us some initial trouble. For example, once the glut main loop starts running, printing to cout does not work as expected (without some changes). As such, we thought everything was constantly broken because all the debug messages were never showing up. However, once we had a grasp of the `glutMainLoop()`, we were set.
+This way of thinking of course caused us some initial trouble. For example, once the glut main loop starts running, printing to cout does not work as expected (as the main glut loop never returns). As such, we thought everything was constantly broken because all the debug messages were never showing up. However, once we had a grasp of the `glutMainLoop()`, we were set.
 
 Another component we worked with was SOIL (simple OpenGL image library) in OpenGL. SOIL is much more straightforward than the "pure" OpenGL way of rendering textures, which made our lives considerably easier (~5 lines of code with SOIL vs. ~300 lines without). This meant that we could create a player texture and render it with this code:
 ```
@@ -120,4 +120,4 @@ We also approached this project more in the mindset of using C++ instead of C. A
 
 ## The completed game
 A more complete look at the game can be found in [our repo](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus). However, if clicking links is too difficult, don't worry, here is a gif of the player falling because of gravity.
-![](reports/resources/)
+![gravity.gif](reports/resources/gravity.gif)
