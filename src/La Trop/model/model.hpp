@@ -30,6 +30,7 @@ public:
     BlockMap getWorld();
     Player& getPlayer();
     void addBlock(float x, float y, Block block);
+    void readLevel(char *level);
     void updateKeyState(unsigned char key, bool val);
     void update();
 
