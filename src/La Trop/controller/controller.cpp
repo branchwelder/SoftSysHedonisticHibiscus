@@ -15,10 +15,10 @@ void Controller::handleKeyPress(unsigned char key, int x, int y) {
         case 27:
             exit(0);
         case 'q':
-            std::cout << "fire left portal";
+            _model->movePortalEntrance(0);
             break;
         case 'e':
-            std::cout << "fire right portal";
+            _model->movePortalEntrance(1);
             break;
         case 'w':
             _model->getPlayer().jump();
@@ -32,5 +32,20 @@ void Controller::handleKeyRelease(unsigned char key, int x, int y) {
 }
 
 void Controller::handleSpecialKeys(int key, int x, int y) {
-
+    switch (key) {
+        case GLUT_KEY_UP:
+            _model->movePortalTarget(0.0f, 1.0f);
+            break;
+        case GLUT_KEY_DOWN:
+            _model->movePortalTarget(0.0f, -1.0f);
+            break;
+        case GLUT_KEY_LEFT:
+            _model->movePortalTarget(-1.0f, 0.0f);
+            break;
+        case GLUT_KEY_RIGHT:
+            _model->movePortalTarget(1.0f, 0.0f);
+            break;
+        default:
+            break;
+    }
 }

@@ -11,7 +11,7 @@
 
 #include "types.h"
 
-#define JUMP_VELOCITY 10 // blocks per second
+#define JUMP_VELOCITY 15 // blocks per second
 
 class Player {
 public:

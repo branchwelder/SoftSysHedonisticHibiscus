@@ -29,8 +29,17 @@ void Model::addBlock(float x, float y, Block block) {
     _world.insert(std::make_pair(std::make_pair(x, y), block));
 }
 
-void Model::movePortalEntrance(int num, Vector newPosition, int side) {
-    _portal.moveEntrance(num, newPosition, side);
+Vector Model::getPortalTarget() {
+    return _portalTarget;
+}
+
+void Model::movePortalTarget(float dx, float dy) {
+    _portalTarget.first += dx;
+    _portalTarget.second += dy;
+}
+
+void Model::movePortalEntrance(int num) {
+    _portal.moveEntrance(num, _portalTarget, 0); //this is currently non-directional
 }
 
 void Model::readLevel(char *level) {
@@ -52,7 +61,6 @@ void Model::readLevel(char *level) {
         }
         lineNum++;
     }
-    
     levelFile.close();
 }
 
@@ -109,27 +117,29 @@ void Model::_handlePhysics(float dt) {
         _player.getPosition().first + dx,
         _player.getPosition().second + dy
     );
-    
-    for (int i = 0; i < 2; i++) {
-        int portalCollision = _checkCollision(
-            _portal.getEntrance(i).position,
-            newPosition
-        );
-        if (portalCollision != 0) {
-            Vector distance = _portal.getTeleportDistance();
-            dx -= distance.first * (1 - i * 2);
-            dy -= distance.second * (1 - i * 2);
-            Vector velocity = _player.getVelocity();
-            if (std::abs(velocity.first) > std::abs(velocity.second)) {
-                dx += (velocity.first > 0 ? 2 : -2);
-//                dy += (velocity.second > 0 ? 1 : -1);
-            } else {
-//                dx += (velocity.first > 0 ? 1 : -1);
-                dy += (velocity.second > 0 ? 2 : -2);
+
+    // Check for passing through a portal
+    if (_portal.isActive()) {
+        for (int i = 0; i < 2; i++) {
+            int portalCollision = _checkCollision(
+                _portal.getEntrance(i).position,
+                newPosition
+            );
+            if (portalCollision != 0) {
+                Vector distance = _portal.getTeleportDistance();
+                dx -= distance.first * (1 - i * 2);
+                dy -= distance.second * (1 - i * 2);
+                Vector velocity = _player.getVelocity();
+                if (std::abs(velocity.first) > std::abs(velocity.second)) {
+                    dx += (velocity.first > 0 ? 2 : -2);
+                } else {
+                    dy += (velocity.second > 0 ? 2 : -2);
+                }
             }
         }
     }
 
+    // Check for block collisions
     bool xCollision = false;
     bool yCollision = false;
     for (auto it : _world) {
@@ -146,7 +156,8 @@ void Model::_handlePhysics(float dt) {
             break;
         }
     }
-
+    
+    // Handle changes in gravitational acceleration
     if (yCollision) {
         if (!_player.onGround) {
             _player.onGround = true;

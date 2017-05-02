@@ -12,9 +12,8 @@
 #include <SOIL/SOIL.h>
 
 #include "square.hpp"
-#include "../model/block.hpp"
 
-SquareView::SquareView(float x, float y, Color color) : _x(x), _y(y), _color(color) {
+SquareView::SquareView(Vector corner, Color color) : _corner(corner), _color(color) {
 //    _tex = SOIL_load_OGL_texture
 //    (
 //     "doge.jpg",
@@ -42,13 +41,13 @@ void SquareView::render(){
     glBegin(GL_POLYGON);
     glColor3f(_color.red, _color.green, _color.blue);
 //    glTexCoord2f(0,0);
-    glVertex2f(_x,_y);
+    glVertex2f(_corner.first, _corner.second);
 //    glTexCoord2f(1,0);
-    glVertex2f(_x+1, _y);
+    glVertex2f(_corner.first + 1, _corner.second);
 //    glTexCoord2f(1,1);
-    glVertex2f(_x+1, _y+1);
+    glVertex2f(_corner.first + 1, _corner.second + 1);
 //    glTexCoord2f(0,1);
-    glVertex2f(_x, _y+1);
+    glVertex2f(_corner.first, _corner.second + 1);
     glEnd();
     glEnable(GL_DEPTH_TEST);
     glDepthMask(GL_TRUE);

@@ -25,6 +25,7 @@ private:
     void _renderBlock(Vector position, Block block);
     void _renderPlayer();
     void _renderPortal();
+    void _renderPortalTarget();
 };
 
 #endif /* view_hpp */
