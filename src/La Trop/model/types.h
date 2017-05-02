@@ -12,8 +12,8 @@
 #include <map>
 #include "block.hpp"
 
-typedef std::pair<float, float> Position;
-typedef std::map<Position, Block> BlockMap;
-typedef Position Velocity;
+typedef std::pair<float, float> Vector;
+typedef std::map<Vector, Block> BlockMap;
+typedef Vector Velocity;
 
 #endif /* types_h */

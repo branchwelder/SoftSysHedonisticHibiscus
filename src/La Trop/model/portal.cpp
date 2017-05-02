@@ -11,13 +11,13 @@
 Portal::Portal() {
     PortalEntrance entrance = (PortalEntrance) {
         false,
-        Position(0.0f, 0.0f),
+        Vector(-10.0f, -18.0f),
         -1,
         (Color) { 0.5, 0.15, 0.7 }
     };
     _entrances.first = entrance;
     entrance.color = (Color) { 0.3, 0.8, 0.15 };
-    entrance.blockPosition = Position(5.0f, 0.0f);
+    entrance.position = Vector(15.0f, 20.0f);
     _entrances.second = entrance;
 }
 
@@ -32,10 +32,17 @@ PortalEntrance& Portal::getEntrance(int num) {
     return (num == 0) ? _entrances.first : _entrances.second;
 }
 
-void Portal::moveEntrance(int num, Position position, int side) {
+void Portal::moveEntrance(int num, Vector position, int side) {
     if (num != 0 && num != 1) return;
     PortalEntrance& entrance = getEntrance(num);
     entrance.active = true;
-    entrance.blockPosition = position;
+    entrance.position = position;
     entrance.side = side;
+}
+
+Vector Portal::getTeleportDistance() {
+    return Vector(
+        _entrances.first.position.first - _entrances.second.position.first,
+        _entrances.first.position.second - _entrances.second.position.second
+    );
 }

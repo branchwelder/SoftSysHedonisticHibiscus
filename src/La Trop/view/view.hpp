@@ -22,7 +22,7 @@ public:
 
 private:
     Model *_model;
-    void _renderBlock(Position position, Block block);
+    void _renderBlock(Vector position, Block block);
     void _renderPlayer();
     void _renderPortal();
 };

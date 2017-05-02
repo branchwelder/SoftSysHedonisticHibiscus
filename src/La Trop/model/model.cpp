@@ -29,7 +29,7 @@ void Model::addBlock(float x, float y, Block block) {
     _world.insert(std::make_pair(std::make_pair(x, y), block));
 }
 
-void Model::movePortalEntrance(int num, Position newPosition, int side) {
+void Model::movePortalEntrance(int num, Vector newPosition, int side) {
     _portal.moveEntrance(num, newPosition, side);
 }
 
@@ -56,7 +56,7 @@ void Model::readLevel(char *level) {
     levelFile.close();
 }
 
-int Model::_checkCollision(Position corner1, Position corner2) {
+int Model::_checkCollision(Vector corner1, Vector corner2) {
     float d1x = corner2.first - (corner1.first + 1);
     float d1y = corner2.second - (corner1.second + 1);
     float d2x = corner1.first - (corner2.first + 1);
@@ -105,10 +105,30 @@ void Model::_handlePhysics(float dt) {
     float dydt = GRAVITY * (dt / 1000.0f);
     double dx = _player.getVelocity().first * (dt / 1000.0f);
     double dy = (_player.getVelocity().second + dydt) * (dt / 1000.0f);
-    Position newPosition = Position(
+    Vector newPosition = Vector(
         _player.getPosition().first + dx,
         _player.getPosition().second + dy
     );
+    
+    for (int i = 0; i < 2; i++) {
+        int portalCollision = _checkCollision(
+            _portal.getEntrance(i).position,
+            newPosition
+        );
+        if (portalCollision != 0) {
+            Vector distance = _portal.getTeleportDistance();
+            dx -= distance.first * (1 - i * 2);
+            dy -= distance.second * (1 - i * 2);
+            Vector velocity = _player.getVelocity();
+            if (std::abs(velocity.first) > std::abs(velocity.second)) {
+                dx += (velocity.first > 0 ? 2 : -2);
+//                dy += (velocity.second > 0 ? 1 : -1);
+            } else {
+//                dx += (velocity.first > 0 ? 1 : -1);
+                dy += (velocity.second > 0 ? 2 : -2);
+            }
+        }
+    }
 
     bool xCollision = false;
     bool yCollision = false;

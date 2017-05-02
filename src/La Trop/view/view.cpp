@@ -23,13 +23,13 @@ void View::render() {
     glutSwapBuffers();
 }
 
-void View::_renderBlock(Position position, Block block) {
+void View::_renderBlock(Vector position, Block block) {
     SquareView square(position.first, position.second, block.getColor());
     square.render();
 }
 
 void View::_renderPlayer() {
-    Position position = _model->getPlayer().getPosition();
+    Vector position = _model->getPlayer().getPosition();
     Color playerColor = (Color) { 0.75, 0.75, 0.75 };
     SquareView square(position.first, position.second, playerColor);
     square.render();
@@ -38,7 +38,7 @@ void View::_renderPlayer() {
 void View::_renderPortal() {
     for (int i = 0; i < 2; i++) {
         PortalEntrance entrance = _model->getPortal().getEntrance(i);
-        Position position = entrance.blockPosition;
+        Vector position = entrance.position;
         SquareView square(position.first, position.second, entrance.color);
         square.render();
     }

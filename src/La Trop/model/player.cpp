@@ -8,7 +8,7 @@
 
 #include "player.hpp"
 
-Position Player::getPosition() {
+Vector Player::getPosition() {
     return _position;
 }
 
@@ -36,7 +36,6 @@ void Player::jump() {
     if (onGround) {
         _passiveVelocity.second += JUMP_VELOCITY;
         onGround = false;
-        fprintf(stderr, "jump!\n");
     }
 }
 

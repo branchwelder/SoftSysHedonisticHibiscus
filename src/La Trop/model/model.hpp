@@ -33,7 +33,7 @@ public:
     Player& getPlayer();
     Portal getPortal();
     void addBlock(float x, float y, Block block);
-    void movePortalEntrance(int num, Position newPosition, int side);
+    void movePortalEntrance(int num, Vector newPosition, int side);
     void readLevel(char *level);
     void updateKeyState(unsigned char key, bool val);
     void update();
@@ -44,7 +44,7 @@ private:
     Portal _portal;
     int _time;
     bool _keyStates[256];
-    int _checkCollision(Position corner1, Position corner2);
+    int _checkCollision(Vector corner1, Vector corner2);
     float _handleCollision(float moving, float stationary);
     void _movePlayer(float x, float y);
     void _processKeys();

@@ -14,7 +14,7 @@
 
 struct PortalEntrance {
     bool active;
-    Position blockPosition;
+    Vector position;
     int side; //left 0, top 1, right 2, bottom 3, -1 uninitalized
     Color color;
 };
@@ -24,7 +24,8 @@ public:
     Portal();
     bool isActive();
     PortalEntrance& getEntrance(int num);
-    void moveEntrance(int num, Position position, int side);
+    void moveEntrance(int num, Vector position, int side);
+    Vector getTeleportDistance();
 
 private:
     std::pair<PortalEntrance, PortalEntrance> _entrances;

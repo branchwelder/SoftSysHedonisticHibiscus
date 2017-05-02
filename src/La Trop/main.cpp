@@ -98,7 +98,7 @@ int main(int argc, char **argv) {
     model = new Model();
     view = new View(model);
     controller = new Controller(model);
-    
+
     if ( argc == 2 ) {
         // TODO check input for levels existing/properly formatted
         model->readLevel(argv[1]);
