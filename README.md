@@ -14,7 +14,7 @@ A game implementation in C++ using OpenGL to render sprites and graphics. The ga
 
 This project was developed in Xcode, so if you are running on a Mac then download Xcode, clone this repo, open the project with `open src/La\ Trop.xcodeproj/`, and click run (or CMD+r).
 
-If you are not running on a Mac, executables for Ubuntu can be found in the root of this repo. Download and run.
+If you are not running on a Mac, there is a way to compile this project in other OSes, however the previous tools to do so were deprecated (specifically pbxbuild).
 
 ## Usage
 WASD or up, left, down, right: character movement.
@@ -24,6 +24,8 @@ Q: fire the purple portal.
 E: fire the green portal.
 
 Esc: exit the game.
+
+If you want to use/load a level, they are saved in .txt files and should be placed in the src/ root. They are passed into the program as a second argument when running from terminal, e.g. `./`
 
 ## License
 [MIT License](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus/blob/master/LICENSE)
