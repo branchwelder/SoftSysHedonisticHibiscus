@@ -1,11 +1,11 @@
 # Lá Trop
-## Now you're thinking with OpenGL, teleportation, and gravity!
-### Hannah Twigg-Smith, Philip Seger, Sam Myers
+## 2D Portal with C++ and GLUT
+### Hannah Twigg-Smith, Philip Seger, and Sam Myers
 
-## What we did
+## Big Idea
 We implemented a game using OpenGL in C++. This game consists of a player who can place two portals which teleport the player to the other location on contact. The world where this player exists is affected by gravity and other obstacles, however they can jump around and teleport to solve levels.
 
-## What we set out to accomplish
+## Background
 The main goal of this project was to develop a game in C++ using OpenGL to render sprites and graphics. The finished game consists of player movement from a two-dimensional, top-down perspective. A mechanic we implemented was portals that allow the player to teleport to different locations. Stretch goals that we met were improved graphics using textures and a more lifelike physics engine that includes gravity on the player.
 
 ## How we planned on accomplishing it
@@ -22,7 +22,7 @@ The largest focus for this project was exploring and learning about OpenGL and G
 This way of thinking of course caused us some initial trouble. For example, once the glut main loop starts running, printing to std::cout does not work as expected (as the main glut loop never returns). As such, we thought everything was constantly broken because all the debug messages were never showing up. However, once we had a grasp of the `glutMainLoop()`, we were set.
 
 Another component we worked with was SOIL (simple OpenGL image library) in OpenGL. SOIL is much more straightforward than the "pure" OpenGL way of rendering textures, which made our lives considerably easier (~5 lines of code with SOIL vs. ~300 lines without). This meant that we could create a player texture and render it with this code:
-```
+```cpp
 _tex = SOIL_load_OGL_texture
     (
      "doge.jpg",
@@ -32,7 +32,7 @@ _tex = SOIL_load_OGL_texture
      );
 ```
 This code loads the texture and stores it, which is then rendered onto a polygon with the following code:
-```
+```cpp
 // Enable 2D textures
 glEnable(GL_TEXTURE_2D);
 
@@ -55,7 +55,7 @@ glEnd();
 
 ### _Physics_
 Instead of handling player movement as a discrete number of blocks per keypress, we switched to players having acceleration and velocities, making movement seem a little more fluid. The way we process keypresses now sets the velocity of a player, as shown below:
-```
+```cpp
 void Model::_processKeys() {
     if (_keyStates['a'] && !_keyStates['d']) {
         _player.setActiveVelocity(-PLAYER_SPEED, 0.0f);
@@ -69,7 +69,7 @@ void Model::_processKeys() {
 
 As well, we process gravity if there is no block underneath the player. This is a meaty function, but the big takeaways are that there is a dy/dt multiplier for gravity, and this affects the player no matter where they are, unless they are on the bottom of the map or intersecting with another block.
 
-```
+```cpp
 void Model::_handlePhysics(float dt) {
     float dydt = GRAVITY * (dt / 1000.0f);
     double dx = _player.getVelocity().first * (dt / 1000.0f);
@@ -113,12 +113,12 @@ void Model::_handlePhysics(float dt) {
 ```
 
 ### _Developing in Xcode_
-Every member of the team had a Mac, so we decided as a team that this might be an opportune time to learn the ins and outs of Xcode. To do this, we built the whole project in the environment, using the command line as little as possible to fully immerse ourselves. This turned out to be a bit of a double edged sword. While it was super useful to compile and run the game, it also meant that we did not have a way to build for other environments as easily. As well, a merge conflict with Xcode project configuration settings turned into a monster that was not as easily resolved. In general though, C++ development with Xcode was fairly straightforward and very nice for building a test package without much extra thought (just use CMD+r).
+Every member of the team had a Mac and no experience working with Xcode, so we decided to use Xcode as our development environment. We created the entirety of the project in the environment, using the command line as little as possible to fully immerse ourselves. Although we learned quite a bit about linking libraries and managing a large project with Xcode, we have ultimately decided that the trouble it caused us wasn't worth the effort. While it was easy to compile and run the game using the builtin functionality, it also meant that we did not have a way to build for other environments as easily. We also experienced a serious merge conflict within the Xcode project configuration settings at a critical point in implementation that took us multiple hours to resolve. In general, local C++ development with Xcode was fairly straightforward and very nice for building a test package without much extra thought (just use CMD+r), but if we were going to use it again in the future we would better research the intricacies of collborating with it using version control.
 
-### _C++ instead of C_
-We also approached this project more in the mindset of using C++ instead of C. As it turns out, the object-oriented paradigm is better suited for game development than pure C. Mainly, we used public and private values and functions to more conveniently organize code. We also split up files into the Model, View, Control model that is standard in all game programming.
+### _Exploring C++_
+For this project, we switched from C to C++, mainly because we wanted to gain experience with a new language and C++'s object-oriented features are much better suited for game development than pure C. This allowed us to organize our files into the Model-View-Controller structure that is standard for game programming. We used public and private values and functions to more conveniently organize code. 
 
-## The completed game
-A more complete look at the game can be found in [our repo](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus). However, if clicking links is too difficult, don't worry, here is a gif of the player falling because of gravity.
+## The Final Game
+The final version of Là Trop can be found in [our git repo](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus). Here's a gif of it running:
 
 ![gravity.gif](reports/resources/gravity.gif)
