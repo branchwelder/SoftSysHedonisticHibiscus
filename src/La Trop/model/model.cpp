@@ -20,8 +20,16 @@ Player& Model::getPlayer() {
     return _player;
 }
 
+Portal Model::getPortal() {
+    return _portal;
+}
+
 void Model::addBlock(float x, float y, Block block) {
     _world.insert(std::make_pair(std::make_pair(x, y), block));
+}
+
+void Model::movePortalEntrance(int num, Position newPosition, int side) {
+    _portal.moveEntrance(num, newPosition, side);
 }
 
 int Model::_checkCollision(Position corner1, Position corner2) {
@@ -47,7 +55,7 @@ int Model::_checkCollision(Position corner1, Position corner2) {
 }
 
 float Model::_handleCollision(float moving, float stationary) {
-    float diff = stationary - moving + (moving > stationary ? 1 : -1);
+    float diff = stationary - moving + (moving > stationary ? 1.0f : -1.0f);
     return diff;
 }
 

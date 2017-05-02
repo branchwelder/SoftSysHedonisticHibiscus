@@ -12,12 +12,14 @@
 #include <map>
 #include "block.hpp"
 #include "player.hpp"
+#include "portal.hpp"
 #include "types.h"
 
 #define PLAYER_SPEED 5.0f //blocks per second
 #define GRAVITY -15.0f // blocks per second squared
 #define PLAYER_HITBOX_X 1.0f
 #define PLAYER_HITBOX_Y 1.0f
+#define PORTAL_SIZE 1.5f
 
 class Model {
 public:
@@ -29,13 +31,16 @@ public:
     {};
     BlockMap getWorld();
     Player& getPlayer();
+    Portal getPortal();
     void addBlock(float x, float y, Block block);
+    void movePortalEntrance(int num, Position newPosition, int side);
     void updateKeyState(unsigned char key, bool val);
     void update();
 
 private:
     BlockMap _world;
     Player _player;
+    Portal _portal;
     int _time;
     bool _keyStates[256];
     int _checkCollision(Position corner1, Position corner2);

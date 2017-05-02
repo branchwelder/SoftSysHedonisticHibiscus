@@ -99,9 +99,14 @@ int main(int argc, char **argv) {
     view = new View(model);
     controller = new Controller(model);
     
-    model->addBlock(5, -18, Block(RED));
-    for (int i = -32; i <= 32; i++) {
-        model->addBlock(i, -20, Block(SILVER));
+    model->addBlock(5, -2, Block(RED));
+    for (int i = -32; i < 32; i++) {
+        model->addBlock(i, 23, Block(SILVER));
+        model->addBlock(i, -24, Block(SILVER));
+    }
+    for (int i = -23; i < 23; i++) {
+        model->addBlock(-32, i, Block(SILVER));
+        model->addBlock(31, i, Block(SILVER));
     }
 
     glutDisplayFunc(display);

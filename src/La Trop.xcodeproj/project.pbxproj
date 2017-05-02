@@ -19,7 +19,8 @@
 		22EF204E1EB58F6D00683BD4 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22EF204C1EB58F6D00683BD4 /* color.cpp */; };
 		22FA5A261EB801850026CE37 /* bork.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22FA5A241EB801850026CE37 /* bork.jpg */; };
 		22FA5A271EB801850026CE37 /* doge.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22FA5A251EB801850026CE37 /* doge.jpg */; };
-		22FA5A2D1EB80AC70026CE37 /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FA5A221EB801140026CE37 /* libSOIL.a */; };
+		22FA5A2E1EB810A40026CE37 /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FA5A221EB801140026CE37 /* libSOIL.a */; };
+		22FA5A311EB81FBE0026CE37 /* portal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FA5A2F1EB81FBE0026CE37 /* portal.cpp */; };
 		A2A6B4481E9459DE00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4461E9459DE00E59F70 /* player.cpp */; };
 		A2A6B44B1E9467FC00E59F70 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B4491E9467FC00E59F70 /* player.cpp */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,8 @@
 		22FA5A221EB801140026CE37 /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = ../../../../../opt/local/lib/libSOIL.a; sourceTree = "<group>"; };
 		22FA5A241EB801850026CE37 /* bork.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bork.jpg; path = "La Trop/im/bork.jpg"; sourceTree = "<group>"; };
 		22FA5A251EB801850026CE37 /* doge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = doge.jpg; path = "La Trop/im/doge.jpg"; sourceTree = "<group>"; };
+		22FA5A2F1EB81FBE0026CE37 /* portal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = portal.cpp; path = model/portal.cpp; sourceTree = "<group>"; };
+		22FA5A301EB81FBE0026CE37 /* portal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = portal.hpp; path = model/portal.hpp; sourceTree = "<group>"; };
 		A2A6B4461E9459DE00E59F70 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = view/player.cpp; sourceTree = "<group>"; };
 		A2A6B4471E9459DE00E59F70 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = player.hpp; path = view/player.hpp; sourceTree = "<group>"; };
 		A2A6B4491E9467FC00E59F70 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = player.cpp; path = model/player.cpp; sourceTree = "<group>"; };
@@ -76,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22FA5A2D1EB80AC70026CE37 /* libSOIL.a in Frameworks */,
+				22FA5A2E1EB810A40026CE37 /* libSOIL.a in Frameworks */,
 				220952D61E9044A600C41ED7 /* OpenGL.framework in Frameworks */,
 				220952D71E9044AB00C41ED7 /* GLUT.framework in Frameworks */,
 			);
@@ -156,6 +159,8 @@
 				22E94D6C1E920EEE0026E48E /* model.hpp */,
 				22E94D6E1E92158B0026E48E /* block.cpp */,
 				22E94D6F1E92158B0026E48E /* block.hpp */,
+				22FA5A2F1EB81FBE0026CE37 /* portal.cpp */,
+				22FA5A301EB81FBE0026CE37 /* portal.hpp */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 				22EF204E1EB58F6D00683BD4 /* color.cpp in Sources */,
 				22E94D741E92E0640026E48E /* controller.cpp in Sources */,
 				22E94D6A1E9209B30026E48E /* view.cpp in Sources */,
+				22FA5A311EB81FBE0026CE37 /* portal.cpp in Sources */,
 				22E94D6D1E920EEE0026E48E /* model.cpp in Sources */,
 				A2A6B4481E9459DE00E59F70 /* player.cpp in Sources */,
 			);
@@ -364,7 +370,6 @@
 					"\"/usr/local/lib\"",
 					"\"/opt/local/lib\"",
 				);
-				"OTHER_LDFLAGS[arch=*]" = lSOIL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
