@@ -2,6 +2,8 @@
 ## 2D Portal with C++ and GLUT
 ### Hannah Twigg-Smith, Philip Seger, and Sam Myers
 
+![example.gif](reports/resources/example.gif)
+
 ## Big Idea
 Là Trop is a two-dimensional, Portal-inspired platformer created in C++ and OpenGL. The player can place two portals which teleport them to the other location on contact. The game world is viewed from the side, and the player is affected by gravity, obstacles, and enemies. They must teleport around to complete levels.
 
@@ -45,7 +47,7 @@ Levels are stored as .txt files and can be edited by the end user to create cust
 ### OpenGL Graphics and Textures
 The largest focus for this project was to explore OpenGL and GLUT, which are rendering systems that are available for many languages (our focus was C++). With GLUT/OpenGL, the GLUT main loop takes over the program when it is called (using `glutMainLoop()`) and handles frame redraws and updates. Each time through the loop, the model is updated and the view is rendered to reflect those updates.
 
-GLUT caused us some initial trouble. For example, once the GLUT main loop takes control, printing to std::cout is blocked (as the main glut loop never returns) which prevents us from debugging with print statements. Before we realized this, we thought everything was broken because our debug messages were never displaying in the consols. 
+GLUT caused us some initial trouble. For example, once the GLUT main loop takes control, printing to std::cout is blocked (as the main glut loop never returns) which prevents us from debugging with print statements. Before we realized this, we thought everything was broken because our debug messages were never displaying in the consols.
 
 One of the main resources we worked with was SOIL (the Simple OpenGL Image Library) in OpenGL. SOIL is much more straightforward than the "pure" OpenGL way of rendering textures, which made our lives considerably easier (~25 lines of code with SOIL vs. ~300 lines with pure OpenGL). This meant that we could load a texture and render it with this function:
 
@@ -145,7 +147,7 @@ void Model::_handlePhysics(float dt) {
 Every member of the team had a Mac and no experience working with Xcode, so we decided to use Xcode as our development environment. We created the entirety of the project in the environment, using the command line as little as possible to fully immerse ourselves. Although we learned quite a bit about linking libraries and managing a large project with Xcode, we have ultimately decided that the trouble it caused us wasn't worth the effort. While it was easy to compile and run the game using the builtin functionality, it also meant that we did not have a way to build for other environments as easily. We also experienced a serious merge conflict within the Xcode project configuration settings at a critical point in implementation that took us multiple hours to resolve. In general, local C++ development with Xcode was fairly straightforward and very nice for building a test package without much extra thought (just use CMD+r), but if we were going to use it again in the future we would better research the intricacies of collborating with it using version control.
 
 ### Exploring C++
-For this project, we switched from C to C++, mainly because we wanted to gain experience with a new language and C++'s object-oriented features are much better suited for game development than pure C. This allowed us to organize our files into the Model-View-Controller structure that is standard for game programming. We used public and private values and functions to more conveniently organize code. 
+For this project, we switched from C to C++, mainly because we wanted to gain experience with a new language and C++'s object-oriented features are much better suited for game development than pure C. This allowed us to organize our files into the Model-View-Controller structure that is standard for game programming. We used public and private values and functions to more conveniently organize code.
 
 ## Results
 The final version of Là Trop can be found in [our git repo](https://github.com/hannahtwiggsmith/SoftSysHedonisticHibiscus). Here's a gif of it running:
