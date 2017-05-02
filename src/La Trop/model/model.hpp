@@ -34,6 +34,7 @@ public:
     Portal getPortal();
     void addBlock(float x, float y, Block block);
     void movePortalEntrance(int num, Position newPosition, int side);
+    void readLevel(char *level);
     void updateKeyState(unsigned char key, bool val);
     void update();
 
