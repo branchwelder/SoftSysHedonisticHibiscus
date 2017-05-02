@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cmath>
 #include <GLUT/glut.h>
+#include <fstream>
 #include "model.hpp"
 #include "types.h"
 
@@ -22,6 +23,29 @@ Player& Model::getPlayer() {
 
 void Model::addBlock(float x, float y, Block block) {
     _world.insert(std::make_pair(std::make_pair(x, y), block));
+}
+
+void Model::readLevel(char *level) {
+    std::ifstream levelFile;
+    std::string line;
+    // our coordinate system does not start at 0,0, so we need to
+    // take the window size into account
+    int lineNum = -23;
+    
+    levelFile.open(level);
+    
+    while (std::getline(levelFile, line)) {
+        for (int i = 0; i < line.length(); i++) {
+            char ch = line[i];
+            if (ch == '1') {
+                // -32 is to fit back to our window's coordinates
+                addBlock(i - 32, -lineNum, Block({1.0, 0.0, 0.0}));
+            }
+        }
+        lineNum++;
+    }
+    
+    levelFile.close();
 }
 
 int Model::_checkCollision(Position corner1, Position corner2) {
