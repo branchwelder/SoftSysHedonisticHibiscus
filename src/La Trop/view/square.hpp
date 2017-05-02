@@ -12,15 +12,15 @@
 #define square_hpp
 
 #include "color.hpp"
+#include "../model/types.h"
 
 class SquareView {
 public:
-    SquareView(float x, float y, Color color);
+    SquareView(Vector corner, Color color);
     void render();
 
 private:
-    float _x;
-    float _y;
+    Vector _corner;
     GLuint _tex;
     Color _color;
 };
